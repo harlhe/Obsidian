@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "d85394f749cfa3a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d23ae70b03e6fc1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "171a2f0b46dcbcf0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "47ade2d2bfadf366",
+    "type": "split",
+    "children": [
+      {
+        "id": "91cfdc5c3f3287a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "472cb6bb49cbdb1a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byCreatedTime",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "e0a3f072a04bae07",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "3dd48bba05a43530",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "9e223b746ee2f7cf",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf7263d8521691f3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba8039a8e52f765b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Agent开发知识/ADK.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "ADK 的反向链接列表"
+            }
+          },
+          {
+            "id": "fe593001f107c148",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Agent开发知识/ADK.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "ADK 的出链列表"
+            }
+          },
+          {
+            "id": "1b184567fe5bc8ff",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "0abdd584ba998d29",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "README 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 275.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "remotely-save:Remotely Save": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "171a2f0b46dcbcf0",
+  "lastOpenFiles": [
+    "SWE-agent............................./测评.md",
+    "README.md",
+    "其他/月报.md",
+    "其他/todo.md",
+    "其他/业务.md",
+    "其他/Agent八股.md",
+    "文档阅读/Cline.md",
+    "文档阅读/LangChain.md",
+    "文档阅读/TypeScript.md",
+    "文档阅读",
+    "SWE-agent............................./架构.md",
+    "SWE-agent............................./test prompt.md",
+    "其他",
+    "MCP服务项目.................................",
+    "Agent开发知识/TDD.md",
+    "OpenManus....................................",
+    "claude.........................................../开发域代码生成Agents知识库业务方案.md",
+    "claude.........................................../竞品功能分析.md",
+    "claude.........................................../接口功能.md",
+    "claude.........................................../技术架构.md",
+    "SWE-agent.............................",
+    "开发助手(cline)............................/开发助手(cline).............................md",
+    "开发助手(cline)............................",
+    "cline......................................",
+    "JAVA/分布式微服务.md",
+    "assets/Pasted image 20250806161534.png",
+    "小智医疗/知识点梳理.md",
+    "Agent开发知识/Spring AI.md",
+    "Agent开发知识/ReAct.md",
+    "Agent开发知识/OpenManus.md",
+    "claude.........................................../MVC调用链分析.md",
+    "claude.........................................../项目整体分析.md",
+    "Agent开发知识/ADK.md",
+    "小智医疗/项目梳理.md",
+    "agent八股",
+    "JAVA/注解",
+    "assets/Cline、Roo Code官方文档总结.png",
+    "assets/Pasted image 20250801111046.png",
+    "小智医疗",
+    "assets/Pasted image 20250730165400.png",
+    "assets/Pasted image 20250730171337.png",
+    "assets/Pasted image 20250730154040.png",
+    "assets/Pasted image 20250730154030.png"
+  ]
+}
