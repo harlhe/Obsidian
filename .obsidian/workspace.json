@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "6d23ae70b03e6fc1",
+        "id": "3939348f9260a668",
         "type": "tabs",
         "children": [
           {
-            "id": "171a2f0b46dcbcf0",
+            "id": "89f88fdd3ed54b5b",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "MCP服务项目................................./zte-studio-devops-mcp",
-                "bFile": "MCP服务项目................................./zte-studio-devops-mcp",
-                "aRef": ""
+                "file": "笔记提示词.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: zte-studio-devops-mcp"
+              "icon": "lucide-file",
+              "title": "笔记提示词"
             }
           }
         ]
@@ -142,12 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "笔记提示词.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "笔记提示词 的大纲"
             }
           },
           {
@@ -158,6 +159,16 @@
               "state": {},
               "icon": "git-pull-request",
               "title": "Source Control"
+            }
+          },
+          {
+            "id": "c2eae7418fdaa396",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
             }
           }
         ],
@@ -175,11 +186,17 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
   "active": "472cb6bb49cbdb1a",
   "lastOpenFiles": [
+    "TypeScript/let替换var的原因.md",
+    "笔记提示词.md",
+    "TypeScript.md",
+    "TypeScript",
+    "Python",
     "zte-studio-devops-mcp.zip",
     "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev/starter-webmvc-server.log.2025-06-15.0.gz",
     "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev/starter-webmvc-server.log.2025-06-13.0.gz",
@@ -188,9 +205,6 @@
     "zte-studio-devops-mcp/model-context-protocol",
     "zte-studio-devops-mcp/mcp-starter/src/main/java/com/zte/studio/devops/mcp/starter/filter/AuthFilter.java",
     "zte-studio-devops-mcp/mcp-starter/src/main/java/com/zte/studio/devops/mcp/starter/config/InterceptorConfig.java",
-    "zte-studio-devops-mcp/mcp-starter/src/main/java/com/zte/studio/devops/mcp/starter/filter",
-    "zte-studio-devops-mcp/mcp-starter/src/main/java/com/zte/studio/devops/mcp/starter/config",
-    "zte-studio-devops-mcp/mcp-starter/src/main/java/com/zte/studio/devops/mcp/starter",
     "zte-studio-devops-mcp/README.md",
     "小智医疗/知识点梳理.md",
     "MCP服务项目................................./zte-studio-devops-mcp/README.md",
@@ -215,8 +229,6 @@
     "JAVA/分布式微服务.md",
     "assets/Pasted image 20250806161534.png",
     "Agent开发知识/Spring AI.md",
-    "Agent开发知识/ReAct.md",
-    "Agent开发知识/OpenManus.md",
     "assets/Cline、Roo Code官方文档总结.png",
     "assets/Pasted image 20250801111046.png",
     "assets/Pasted image 20250730165400.png",
