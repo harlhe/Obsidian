@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "笔记提示词.md",
+                "file": "TypeScript/接口中的约束.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "笔记提示词"
+              "title": "接口中的约束"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "笔记提示词.md",
+                "file": "TypeScript/接口中的约束.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "笔记提示词 的大纲"
+              "title": "接口中的约束 的大纲"
             }
           },
           {
@@ -190,10 +190,12 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "472cb6bb49cbdb1a",
+  "active": "1310317f73ee6bd5",
   "lastOpenFiles": [
-    "TypeScript/let替换var的原因.md",
+    "TypeScript/未命名.md",
+    "TypeScript/接口中的约束.md",
     "笔记提示词.md",
+    "TypeScript/let替换var的原因.md",
     "TypeScript.md",
     "TypeScript",
     "Python",
@@ -226,9 +228,7 @@
     "claude.........................................../接口功能.md",
     "claude.........................................../技术架构.md",
     "开发助手(cline)............................/开发助手(cline).............................md",
-    "JAVA/分布式微服务.md",
     "assets/Pasted image 20250806161534.png",
-    "Agent开发知识/Spring AI.md",
     "assets/Cline、Roo Code官方文档总结.png",
     "assets/Pasted image 20250801111046.png",
     "assets/Pasted image 20250730165400.png",
