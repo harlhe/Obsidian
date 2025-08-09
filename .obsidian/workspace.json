@@ -152,7 +152,17 @@
             }
           },
           {
-            "id": "1310317f73ee6bd5",
+            "id": "c2eae7418fdaa396",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "插件不再活动"
+            }
+          },
+          {
+            "id": "bcdcc75ddfc05c39",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -160,19 +170,9 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
-          },
-          {
-            "id": "c2eae7418fdaa396",
-            "type": "leaf",
-            "state": {
-              "type": "mermaid-toolbar-view",
-              "state": {},
-              "icon": "trident-custom",
-              "title": "Mermaid Toolbar"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -186,11 +186,10 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "obsidian-git:Open Git source control": false,
-      "mermaid-tools:Open Mermaid Toolbar": false
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1310317f73ee6bd5",
+  "active": "0abdd584ba998d29",
   "lastOpenFiles": [
     "TypeScript/未命名.md",
     "TypeScript/接口中的约束.md",
