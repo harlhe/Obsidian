@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "hot100.md",
+                "file": "cline................................../cursor_agnet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "hot100"
+              "title": "cursor_agnet"
             }
           }
         ]
@@ -191,10 +191,12 @@
   },
   "active": "89f88fdd3ed54b5b",
   "lastOpenFiles": [
+    "cline................................../cline.md",
+    "cline................................../cursor_agnet.md",
+    "cline..................................",
+    "hot100.md",
     "笔记提示词.md",
     "月报/7月月报.md",
-    "未命名.md",
-    "hot100.md",
     "月报/文献阅读.md",
     "TypeScript/接口中的约束.md",
     "月报",
@@ -209,7 +211,6 @@
     "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev",
     "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server",
     "zte-studio-devops-mcp/model-context-protocol",
-    "zte-studio-devops-mcp/mcp-starter/src/main/java/com/zte/studio/devops/mcp/starter/filter/AuthFilter.java",
     "zte-studio-devops-mcp/README.md",
     "小智医疗/知识点梳理.md",
     "MCP服务项目................................./zte-studio-devops-mcp/README.md",
@@ -226,7 +227,6 @@
     "其他/Agent八股.md",
     "Agent开发知识/TDD.md",
     "claude.........................................../开发域代码生成Agents知识库业务方案.md",
-    "claude.........................................../竞品功能分析.md",
     "assets/Pasted image 20250806161534.png",
     "assets/Cline、Roo Code官方文档总结.png",
     "assets/Pasted image 20250801111046.png",
