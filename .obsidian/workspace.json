@@ -152,17 +152,7 @@
             }
           },
           {
-            "id": "c2eae7418fdaa396",
-            "type": "leaf",
-            "state": {
-              "type": "mermaid-toolbar-view",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "插件不再活动"
-            }
-          },
-          {
-            "id": "bcdcc75ddfc05c39",
+            "id": "1310317f73ee6bd5",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -170,9 +160,19 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "36de176f36d3a71a",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -186,21 +186,26 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
   "active": "89f88fdd3ed54b5b",
   "lastOpenFiles": [
-    "cline................................../cline.md",
-    "cline................................../cursor_agnet.md",
-    "cline..................................",
-    "hot100.md",
-    "笔记提示词.md",
-    "月报/7月月报.md",
-    "月报/文献阅读.md",
+    "TypeScript/this指针丢失问题.md",
+    "TypeScript/snakes.md",
     "TypeScript/接口中的约束.md",
+    "笔记提示词.md",
+    "cline................................../cursor_agnet.md",
+    "其他/Agent八股.md",
+    "其他/业务.md",
+    "其他/todo.md",
+    "月报/文献阅读.md",
+    "月报/7月月报.md",
     "月报",
-    "TypeScript/未命名.md",
+    "hot100.md",
+    "cline..................................",
+    "JAVA/自我总结.md",
     "TypeScript/let替换var的原因.md",
     "TypeScript.md",
     "TypeScript",
@@ -222,11 +227,7 @@
     "SWE-agent............................./test prompt.md",
     "README.md",
     "test.md",
-    "其他/todo.md",
-    "其他/业务.md",
-    "其他/Agent八股.md",
-    "Agent开发知识/TDD.md",
-    "claude.........................................../开发域代码生成Agents知识库业务方案.md",
+    "其他/月报.md",
     "assets/Pasted image 20250806161534.png",
     "assets/Cline、Roo Code官方文档总结.png",
     "assets/Pasted image 20250801111046.png",
