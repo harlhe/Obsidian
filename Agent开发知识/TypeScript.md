@@ -1,3 +1,4 @@
+https://www.runoob.com/typescript/ts-tutorial.html
 ```
 let args: {
 
@@ -92,3 +93,5 @@ let wrongArgs: {
 结论
 
 TypeScript 对两种索引签名的处理方式是不同的，这并非一个漏洞，而是一个精心设计的特性。它允许我们精确地为 arguments、数组以及其他拥有混合属性（即有统一类型的数字索引属性，又有不同类型的具名属性）的复杂对象建立类型模型。您的问题很好地揭示了这一核心差异。
+this指针丢失问题：在 JavaScript/TypeScript 中将方法作为回调传递时，该方法的 ‘this’ 作用域可能会丢失。这是因为方法被作为独立的函数引用传递，与原对象脱离。
+

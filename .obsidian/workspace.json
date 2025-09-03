@@ -13,30 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cline................................../cursor_1.md",
+                "file": "Agent开发知识/TypeScript.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cursor_1"
-            }
-          },
-          {
-            "id": "dc13a7bb1eb57222",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cline................................../cursor_1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "cursor_1"
+              "title": "TypeScript"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -55,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byCreatedTime",
+                "sortOrder": "alphabetical",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -93,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 309.5
   },
   "right": {
     "id": "9e223b746ee2f7cf",
@@ -172,8 +157,8 @@
             "state": {
               "type": "mermaid-toolbar-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "插件不再活动"
+              "icon": "lucide-ghost",
+              "title": "mermaid-toolbar-view"
             }
           },
           {
@@ -191,10 +176,11 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 210.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:创建新数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -204,49 +190,53 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dc13a7bb1eb57222",
+  "active": "472cb6bb49cbdb1a",
   "lastOpenFiles": [
-    "cline................................../cursor_2.md",
-    "cline................................../cursor_3.md",
-    "cline................................../cursor_1.md",
-    "未命名.md",
-    "TypeScript/this指针丢失问题.md",
     "TypeScript/snakes.md",
-    "cline................................../cline.md",
-    "cline..................................",
+    "TypeScript/接口中的约束.md",
+    "Agent开发知识/TypeScript.md",
+    "Agent开发知识/LangChain.md",
+    "文档阅读/LangChain.md",
+    "中兴agent开发助手相关/Cline.md",
+    "中兴agent开发助手相关/技术雷达 1.md",
+    "中兴agent开发助手相关/技术雷达.md",
+    "中兴agent开发助手相关/竞品功能分析.md",
+    "中兴agent开发助手相关/业务.md",
+    "小智医疗/知识点梳理.md",
+    "todo.md",
     "hot100.md",
     "笔记提示词.md",
-    "月报/7月月报.md",
-    "月报/文献阅读.md",
-    "TypeScript/接口中的约束.md",
+    "claude code逆向/cc逆向1-1 数据结构和信息架构2.md",
+    "claude code逆向/cc逆向1-1 数据结构和信息架构1.md",
+    "claude code逆向/cc逆向0-0 对源码的任务编排（可以借鉴为处理大文件思路）.md",
+    "claude code逆向/官方文档总结.md",
+    "claude code逆向/业务补充.md",
+    "assets images/下载.svg",
+    "Agent开发知识/TDD.md",
+    "中兴agent开发助手相关/task.md",
+    "中兴agent开发助手相关/task函数.md",
+    "中兴agent开发助手相关/RAG实现.md",
+    "中兴agent开发助手相关/mcp.md",
+    "Agent开发知识/saas和maas.md",
+    "Agent开发知识/Spring AI.md",
+    "assets images/Pasted image 20250828142550.png",
+    "assets images/Pasted image 20250829151546.png",
+    "assets images/Pasted image 20250829095952.png",
+    "assets images/Pasted image 20250828170229.png",
+    "assets images/Pasted image 20250828161409.png",
+    "assets images/Pasted image 20250828161351.png",
+    "assets images/Pasted image 20250828161338.png",
+    "assets images/Pasted image 20250828101713.png",
+    "assets images/Pasted image 20250827143540.png",
+    "assets images/assets",
+    "claude code逆向",
+    "中兴agent开发助手相关",
     "月报",
-    "TypeScript/未命名.md",
-    "TypeScript/let替换var的原因.md",
-    "TypeScript.md",
     "TypeScript",
     "Python",
     "zte-studio-devops-mcp.zip",
     "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev/starter-webmvc-server.log.2025-06-15.0.gz",
     "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev/starter-webmvc-server.log.2025-06-13.0.gz",
-    "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev",
-    "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server",
-    "zte-studio-devops-mcp/model-context-protocol",
-    "zte-studio-devops-mcp/README.md",
-    "小智医疗/知识点梳理.md",
-    "MCP服务项目................................./zte-studio-devops-mcp/README.md",
-    "文档阅读/Cline.md",
-    "文档阅读/LangChain.md",
-    "文档阅读/TypeScript.md",
-    "SWE-agent............................./测评.md",
-    "SWE-agent............................./架构.md",
-    "SWE-agent............................./test prompt.md",
-    "README.md",
-    "assets/Pasted image 20250806161534.png",
-    "assets/Cline、Roo Code官方文档总结.png",
-    "assets/Pasted image 20250801111046.png",
-    "assets/Pasted image 20250730165400.png",
-    "assets/Pasted image 20250730171337.png",
-    "assets/Pasted image 20250730154040.png",
-    "assets/Pasted image 20250730154030.png"
+    "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev"
   ]
 }
