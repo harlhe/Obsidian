@@ -11,14 +11,12 @@
             "id": "89f88fdd3ed54b5b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "mate-agent/业务.md",
-                "mode": "source",
-                "source": false
+                "file": "assets images/Pasted image 20250908232812.png"
               },
-              "icon": "lucide-file",
-              "title": "业务"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250908232812"
             }
           }
         ]
@@ -190,12 +188,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "89f88fdd3ed54b5b",
+  "active": "472cb6bb49cbdb1a",
   "lastOpenFiles": [
+    "assets images/Pasted image 20250908232849.png",
+    "assets images/Pasted image 20250908232812.png",
+    "assets images/Pasted image 20250908232205.png",
+    "mate-agent/业务.md",
     "mate-agent/codebase.md",
-    "Pasted image 20250908232849.png",
-    "Pasted image 20250908232812.png",
-    "Pasted image 20250908232205.png",
     "mate-agent/task.md",
     "git",
     "mate-agent/response函数.md",
@@ -203,7 +202,6 @@
     "mate-agent/mcp.md",
     "mate-agent/mate-Agents知识库业务方案.md",
     "mate-agent/mate-agent函数调用.md",
-    "mate-agent/业务.md",
     "mate-agent/竞品功能分析.md",
     "mate-agent/cline/Cline.md",
     "mate-agent/cline",
