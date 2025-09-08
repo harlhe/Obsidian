@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mate-agent/task.md",
+                "file": "mate-agent/codebase.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "task"
+              "title": "codebase"
             }
           }
         ]
@@ -192,6 +192,8 @@
   },
   "active": "89f88fdd3ed54b5b",
   "lastOpenFiles": [
+    "Pasted image 20250908232205.png",
+    "mate-agent/task.md",
     "git",
     "mate-agent/response函数.md",
     "mate-agent/RAG实现.md",
@@ -219,7 +221,6 @@
     "Agent应用开发/ReAct.md",
     "Agent应用开发/MCP.md",
     "Agent应用开发/LangGraph.md",
-    "Agent应用开发/LangChain.md",
     "assets images/下载.svg",
     "assets images/Pasted image 20250828142550.png",
     "assets images/Pasted image 20250829151546.png",
@@ -236,7 +237,6 @@
     "月报",
     "TypeScript",
     "Python",
-    "zte-studio-devops-mcp.zip",
-    "zte-studio-devops-mcp/model-context-protocol/studio-devops-mcp-server/dev/starter-webmvc-server.log.2025-06-15.0.gz"
+    "zte-studio-devops-mcp.zip"
   ]
 }
