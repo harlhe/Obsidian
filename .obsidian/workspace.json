@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Clippings/Java基础面试题.md",
+                "file": "Agent应用开发/codebase.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java基础面试题"
+              "title": "codebase"
             }
           }
         ]
@@ -190,8 +190,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "472cb6bb49cbdb1a",
+  "active": "89f88fdd3ed54b5b",
   "lastOpenFiles": [
+    "Clippings/Java基础面试题.md",
+    "Agent应用开发/codebase.md",
     "mate-agent/业务.md",
     "mate-agent/竞品功能分析.md",
     "mate-agent/技术雷达 1.md",
@@ -200,7 +202,6 @@
     "笔记提示词.md",
     "todo.md",
     "claude code逆向/分析.md",
-    "Clippings/Java基础面试题.md",
     "Agent应用开发/saas和maas.md",
     "Clippings",
     "Agent应用开发/ReAct.md",
@@ -218,7 +219,6 @@
     "月报/7月月报.md",
     "月报/8月月报.md",
     "小智医疗/知识点梳理.md",
-    "Agent应用开发/TypeScript.md",
     "assets images/下载.svg",
     "assets images/Pasted image 20250828142550.png",
     "assets images/Pasted image 20250829151546.png",
