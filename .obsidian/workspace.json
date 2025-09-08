@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mate-agent/codebase.md",
+                "file": "mate-agent/业务.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "codebase"
+              "title": "业务"
             }
           }
         ]
@@ -192,6 +192,7 @@
   },
   "active": "89f88fdd3ed54b5b",
   "lastOpenFiles": [
+    "mate-agent/codebase.md",
     "Pasted image 20250908232849.png",
     "Pasted image 20250908232812.png",
     "Pasted image 20250908232205.png",
@@ -202,7 +203,6 @@
     "mate-agent/mcp.md",
     "mate-agent/mate-Agents知识库业务方案.md",
     "mate-agent/mate-agent函数调用.md",
-    "mate-agent/codebase.md",
     "mate-agent/业务.md",
     "mate-agent/竞品功能分析.md",
     "mate-agent/cline/Cline.md",
@@ -230,7 +230,6 @@
     "assets images/Pasted image 20250828170229.png",
     "assets images/Pasted image 20250828161409.png",
     "assets images/Pasted image 20250828161351.png",
-    "assets images/Pasted image 20250828161338.png",
     "assets images/assets",
     "claude code逆向",
     "mate-agent",

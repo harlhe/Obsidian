@@ -68,3 +68,4 @@ projectPathHash为用户工程本地目录（全路径）sha256值 
 5、前端加个删除全量索引的按钮，重要程度：低
 
 ### 3.3代码实现
+vscode/codebase
