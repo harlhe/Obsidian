@@ -15,32 +15,17 @@ tags:
 ### 说一下Java的特点
 
 主要有以下的特点：
-
-- **平台无关性** ：Java的“编写一次，运行无处不在”哲学是其最大的特点之一。Java编译器将源代码编译成字节码（bytecode），该字节码可以在任何安装了Java虚拟机（JVM）的系统上运行。
-- **面向对象** ：Java是一门严格的面向对象编程语言，几乎一切都是对象。面向对象编程（OOP）特性使得代码更易于维护和重用，包括类（class）、对象（object）、继承（inheritance）、多态（polymorphism）、抽象（abstraction）和封装（encapsulation）。
-- **内存管理** ：Java有自己的垃圾回收机制，自动管理内存和回收不再使用的对象。这样，开发者不需要手动管理内存，从而减少内存泄漏和其他内存相关的问题。
-
-### Java 的优势和劣势是什么？
-
-首先，Java的优势，我记得跨平台应该是一个大点，因为JVM的存在，一次编写到处运行。然后面向对象，这个可能也是优势，不过现在很多语言都支持面向对象，但是Java的设计从一开始就是OOP的。还有强大的生态系统，比如Spring框架，Hibernate，各种库和工具，社区支持大，企业应用广泛。另外，内存管理方面，自动垃圾回收机制，减少了内存泄漏的问题，对开发者友好。还有多线程支持，内置的线程机制，方便并发编程。安全性方面，Java有安全模型，比如沙箱机制，适合网络环境。还有稳定性，企业级应用长期使用，版本更新也比较注重向后兼容。
-
-劣势的话，性能可能是一个，虽然JVM优化了很多，但相比C++或者Rust这种原生编译语言，还是有一定开销。特别是启动时间，比如微服务场景下，可能不如Go之类的快。语法繁琐，比如样板代码多，之前没有lambda的时候更麻烦，现在有了但比起Python还是不够简洁。内存消耗，JVM本身占内存，对于资源有限的环境可能不太友好。还有面向对象过于严格，有时候写简单程序反而麻烦，虽然Java8引入了函数式编程，但不如其他语言自然。还有开发效率，相比动态语言如Python，Java需要更多代码，编译过程也可能拖慢开发节奏。
+- **平台无关性** ：Java编译器将源代码编译成字节码（bytecode），该字节码可以在任何安装了Java虚拟机（JVM）的系统上运行。
+- **面向对象** 
+- **内存管理** ：Java有自己的垃圾回收机制，自动管理内存和回收不再使用的对象
 
 ### Java为什么是跨平台的？
 
-Java 能支持跨平台，主要依赖于 JVM 关系比较大。
+Java 能支持跨平台，主要依赖于 JVM ，编写的Java源码，编译后会生成字节码文件。JVM负责将字节码文件翻译成特定平台下的机器码然后运行。
 
-JVM也是一个软件，不同的平台有不同的版本。我们编写的Java源码，编译后会生成一种.class 文件，称为字节码文件。Java虚拟机就是负责将字节码文件翻译成特定平台下的机器码然后运行。也就是说，只要在不同平台上安装对应的JVM，就可以运行字节码文件，运行我们编写的Java程序。
-
-而这个过程中，我们编写的Java程序没有做任何改变，仅仅是通过JVM这一”中间层“，就能在不同平台上运行，真正实现了”一次编译，到处运行“的目的。
-
-JVM是一个”桥梁“，是一个”中间件“，是实现跨平台的关键，Java代码首先被编译成字节码文件，再由JVM将字节码文件翻译成机器语言，从而达到运行Java程序的目的。
-
-编译的结果不是生成机器码，而是生成字节码，字节码不能直接运行，必须通过JVM翻译成机器码才能运行。不同平台下编译生成的字节码是一样的，但是由JVM翻译成的机器码却不一样。
-
-所以，运行Java程序必须有JVM的支持，因为编译的结果不是机器码，必须要经过JVM的再次翻译才能执行。即使你将Java程序打包成可执行文件（例如.exe），仍然需要JVM的支持。
-
-跨平台的是Java程序，不是JVM。JVM是用C/C++开发的，是编译后的机器码，不能跨平台，不同平台下需要安装不同版本的JVM。
+Java代码首先被编译成字节码文件，再由JVM将字节码文件翻译成机器语言，从而达到运行Java程序的目的。
+不同平台下编译生成的字节码是一样的，但是由JVM翻译成的机器码却不一样。
+JVM是用C/C++开发的，是编译后的机器码，不能跨平台，不同平台下需要安装不同版本的JVM。
 
 ![img](https://cdn.xiaolincoding.com//picgo/1713860588639-bb89fc8e-30b6-4d18-a329-f3fea52c729a.png)
 
@@ -61,205 +46,16 @@ JVM是一个”桥梁“，是一个”中间件“，是实现跨平台的关�
 ![img](https://cdn.xiaolincoding.com//picgo/1715928000183-44fc6130-8abc-4f0b-8f6d-79de0ab09509.webp)
 
 **编译性** ：
-
 - Java源代码首先被编译成字节码，JIT 会把编译过的机器码保存起来,以备下次使用。
-
 **解释性：**
-
 - JVM中一个方法调用计数器，当累计计数大于一定值的时候，就使用JIT进行编译生成机器码文件。否则就是用解释器进行解释执行，然后字节码也是经过解释器进行解释运行的。
-
 所以Java既是编译型也是解释性语言，默认采用的是解释器和编译器混合的模式。
-
 ### jvm是什么
 
 JVM是 java 虚拟机，主要工作是解释自己的指令集（即字节码）并映射到本地的CPU指令集和OS的系统调用。
-
-JVM屏蔽了与操作系统平台相关的信息，使得Java程序只需要生成在Java虚拟机上运行的目标代码（字节码），就可在多种平台上不加修改的运行，这也是Java能够“ **一次编译，到处运行的** ”原因。
-
-### 编译型语言和解释型语言的区别？
-
-编译型语言和解释型语言的区别在于：
-
-- 编译型语言：在程序执行之前，整个源代码会被编译成机器码或者字节码，生成可执行文件。执行时直接运行编译后的代码，速度快，但跨平台性较差。
-- 解释型语言：在程序执行时，逐行解释执行源代码，不生成独立的可执行文件。通常由解释器动态解释并执行代码，跨平台性好，但执行速度相对较慢。
-- 典型的编译型语言如C、C++，典型的解释型语言如Python、JavaScript。
-
-### Python和Java区别是什么？
-
-- Java是一种已编译的编程语言，Java编译器将源代码编译为字节码，而字节码则由Java虚拟机执行
-- python是一种解释语言，翻译时会在执行程序的同时进行翻译。
-
-## 数据类型
-
-### 八种基本的数据类型
-
-Java支持数据类型分为两类： 基本数据类型和引用数据类型。
-
-基本数据类型共有8种，可以分为三类：
-
-- 数值型：整数类型（byte、short、int、long）和浮点类型（float、double）
-- 字符型：char
-- 布尔型：boolean
-
-![img](https://cdn.xiaolincoding.com//picgo/1715930632378-7f03a5ae-3364-41d4-88a8-428997d543dd.png)
-
-8种基本数据类型的默认值、位数、取值范围，如下表所示：
-
-| 数据类型 | 占用大小（字节） | 位数 | 取值范围 | 默认值 | 描述 |
-| --- | --- | --- | --- | --- | --- |
-| `byte` | 1 | 8 | \-128（-2^7） 到 127（2^7 - 1） | 0 | 是最小的整数类型，适合用于节省内存，例如在处理文件或网络流时存储小范围整数数据。 |
-| `short` | 2 | 16 | \-32768（-2^15） 到 32767（2^15 - 1） | 0 | 较少使用，通常用于在需要节省内存且数值范围在该区间的场景。 |
-| `int` | 4 | 32 | \-2147483648（-2^31） 到 2147483647（2^31 - 1） | 0 | 最常用的整数类型，可满足大多数日常编程中整数计算的需求。 |
-| `long` | 8 | 64 | \-9223372036854775808（-2^63） 到 9223372036854775807（2^63 - 1） | 0L | 用于表示非常大的整数，当 `int` 类型无法满足需求时使用，定义时数值后需加 `L` 或 `l` 。 |
-| `float` | 4 | 32 | 1.4E - 45 到 3.4028235E38 | 0.0f | 单精度浮点数，用于表示小数，精度相对较低，定义时数值后需加 `F` 或 `f` 。 |
-| `double` | 8 | 64 | 4.9E - 324 到 1.7976931348623157E308 | 0.0d | 双精度浮点数，精度比 `float` 高，是 Java 中表示小数的默认类型。 |
-| `char` | 2 | 16 | '\\u0000'（0） 到 '\\uffff'（65535） | '\\u0000' | 用于表示单个字符，采用 Unicode 编码，可表示各种语言的字符。 |
-| `boolean` | 无明确字节大小（理论上 1 位） | 无明确位数 | `true` 或 `false` | `false` | 用于逻辑判断，只有两个取值，常用于条件判断和循环控制等逻辑场景。 |
-
-Float和Double的最小值和最大值都是以科学记数法的形式输出的，结尾的“E+数字”表示E之前的数字要乘以10的多少倍。比如3.14E3就是3.14×1000=3140，3.14E-3就是3.14/1000=0.00314。
-
-注意一下几点：
-
-- Java八种基本数据类型的字节数：1字节(byte、boolean)、 2字节(short、char)、4字节(int、float)、8字节(long、double)
-- 浮点数的默认类型为double（如果需要声明一个常量为float型，则必须要在末尾加上f或F）
-- 整数的默认类型为int（声明Long型在末尾加上l或者L）
-- 八种基本数据类型的包装类：除了char的是Character、int类型的是Integer，其他都是首字母大写
-- char类型是无符号的，不能为负，所以是0开始的
-
-### int和long是多少位，多少字节的？
-
-- `int` 类型是 32 位（bit），占 4 个字节（byte），int 是有符号整数类型，其取值范围是从 -2^31 到 2^31-1 。例如，在一个简单的计数器程序中，如果使用 `int` 类型来存储计数值，它可以表示的最大正数是 2,147,483,647。如果计数值超过这个范围，就会发生溢出，导致结果不符合预期。
-- `long` 类型是 64 位，占 8 个字节， `long` 类型也是有符号整数类型，它的取值范围是从 -2^63 到 2^63 -1 ，在处理较大的整数数值时，果 `int` 类型的取值范围不够，就需要使用 `long` 类型。例如，在一个文件传输程序中，文件的大小可能会很大，使用 `int` 类型可能无法准确表示，而 `long` 类型就可以很好地处理这种情况。
-
-### long和int可以互转吗 ？
-
-可以的，Java中的 `long` 和 `int` 可以相互转换。由于 `long` 类型的范围比 `int` 类型大，因此将 `int` 转换为 `long` 是安全的，而将 `long` 转换为 `int` 可能会导致数据丢失或溢出。
-
-将 `int` 转换为 `long` 可以通过直接赋值或强制类型转换来实现。例如：
-
-```
-int intValue = 10;
-long longValue = intValue; // 自动转换，安全的
-```
-
-将 `long` 转换为 `int` 需要使用强制类型转换，但需要注意潜在的数据丢失或溢出问题。
-
-![image-20240726003850183](https://cdn.xiaolincoding.com//picgo/image-20240726003850183.png)
-
-例如：
-
-```
-long longValue = 100L;
-int intValue = (int) longValue; // 强制类型转换，可能会有数据丢失或溢出
-```
-
-在将 `long` 转换为 `int` 时，如果 `longValue` 的值超出了 `int` 类型的范围，转换结果将是截断后的低位部分。因此，在进行转换之前，建议先检查 `longValue` 的值是否在 `int` 类型的范围内，以避免数据丢失或溢出的问题。
-
-### 数据类型转换方式你知道哪些？
-
-- 自动类型转换（隐式转换）：当目标类型的范围大于源类型时，Java会自动将源类型转换为目标类型，不需要显式的类型转换。例如，将 `int` 转换为 `long` 、将 `float` 转换为 `double` 等。
-- 强制类型转换（显式转换）：当目标类型的范围小于源类型时，需要使用强制类型转换将源类型转换为目标类型。这可能导致数据丢失或溢出。例如，将 `long` 转换为 `int` 、将 `double` 转换为 `int` 等。语法为：目标类型 变量名 = (目标类型) 源类型。
-- 字符串转换：Java提供了将字符串表示的数据转换为其他类型数据的方法。例如，将字符串转换为整型 `int` ，可以使用 `Integer.parseInt()` 方法；将字符串转换为浮点型 `double` ，可以使用 `Double.parseDouble()` 方法等。
-- 数值之间的转换：Java提供了一些数值类型之间的转换方法，如将整型转换为字符型、将字符型转换为整型等。这些转换方式可以通过类型的包装类来实现，例如 `Character` 类、 `Integer` 类等提供了相应的转换方法。
-
-### 类型互转会出现什么问题吗？
-
-> 基本数据类型转换的问题
-
-当把小范围数据类型赋值给大范围数据类型时，Java 会自动进行类型转换，这种转换一般是安全的。
-
-```
-int num = 100;
-long bigNum = num; // 自动将int转换为long
-```
-
-但是大范围数据类型赋值给小范围数据类型时，会发生数据数据溢出或者精度损失的问题。
-
-- 数据溢出：如果大范围数据类型赋值给小范围数据类型时，当目标类型无法容纳原数据时，就会发生数据溢出。比如下面，byte 类型的取值范围是 - 128 到 127。300 的二进制表示为 `00000001 00101100` ，强制转换为 byte 类型时，会丢弃高位字节，只保留低位的 8 位 `00101100` ，其十进制值为 44。
-```
-int largeNum = 300;
-byte b = (byte) largeNum; // b的值为44
-```
-- 精度损失：在进行浮点数类型的转换时，可能会发生精度损失。由于浮点数的表示方式不同，将一个单精度浮点数(`float`)转换为双精度浮点数(`double`)时，精度可能会损失，如果 double 转换为 int 也会发生精度损失的问题，如下：
-```
-double d = 3.14;
-int i = (int) d; // i的值为3，小数部分0.14被舍弃
-```
-
-> 对象引用转换的问题
-
-向上转型是自动进行的，而且是安全的，如下：
-
-```
-class Animal {}
-class Dog extends Animal {}
-
-Dog dog = new Dog();
-Animal animal = dog; // 自动向上转型
-```
-
-但是向下转型需要手动进行，并且存在风险。如果父类对象实际上并不是目标子类的实例，在转型时就会抛出异常：
-
-```
-Animal animal = new Animal();
-Dog dog = (Dog) animal; // 运行时抛出ClassCastException
-```
-
-原因是Java 的对象在运行时会记录其真实类型，当进行向下转型时，Java 会检查对象的实际类型是否与目标类型兼容。如果不兼容，就会抛出 `ClassCastException` 。
-
-解决方式是需要使用 `instanceof` 检查：
-
-```
-if (animal instanceof Dog) {
-    Dog dog = (Dog) animal; // 只有确认animal是Dog的实例时才进行转型
-}
-```
-
 ### 为什么用bigDecimal 不用double ？
 
-double会出现精度丢失的问题，double执行的是二进制浮点运算，二进制有些情况下不能准确的表示一个小数，就像十进制不能准确的表示1/3(1/3=0.3333...)，也就是说二进制表示小数的时候只能够表示能够用1/(2^n)的和的任意组合，但是0.1不能够精确表示，因为它不能够表示成为1/(2^n)的和的形式。
-
-比如：
-
-```java
-System.out.println(0.05 + 0.01);
-System.out.println(1.0 - 0.42);
-System.out.println(4.015 * 100);
-System.out.println(123.3 / 100);
-
-输出：
-0.060000000000000005
-0.5800000000000001
-401.49999999999994
-1.2329999999999999
-```
-
-可以看到在Java中进行浮点数运算的时候，会出现丢失精度的问题。那么我们如果在进行商品价格计算的时候，就会出现问题。很有可能造成我们手中有0.06元，却无法购买一个0.05元和一个0.01元的商品。因为如上所示，他们两个的总和为0.060000000000000005。这无疑是一个很严重的问题，尤其是当电商网站的并发量上去的时候，出现的问题将是巨大的。可能会导致无法下单，或者对账出现问题。
-
-而 Decimal 是精确计算, 所以一般牵扯到金钱的计算, 都使用 Decimal。
-
-```java
-import java.math.BigDecimal;
-
-public class BigDecimalExample {
-    public static void main(String[] args) {
-        BigDecimal num1 = new BigDecimal("0.1");
-        BigDecimal num2 = new BigDecimal("0.2");
-
-        BigDecimal sum = num1.add(num2);
-        BigDecimal product = num1.multiply(num2);
-
-        System.out.println("Sum: " + sum);
-        System.out.println("Product: " + product);
-    }
-}
-
-//输出
-Sum: 0.3
-Product: 0.02
-```
-
-在上述代码中，我们创建了两个 `BigDecimal` 对象 `num1` 和 `num2` ，分别表示0.1和0.2这两个十进制数。然后，我们使用 `add()` 方法计算它们的和，并使用 `multiply()` 方法计算它们的乘积。最后，我们通过 `System.out.println()` 打印结果。
+double会出现精度丢失的问题，double执行的是二进制浮点运算，二进制有些情况下不能准确的表示一个小数。而 Decimal 是精确计算
 
 这样的使用 `BigDecimal` 可以确保精确的十进制数值计算，避免了使用 `double` 可能出现的舍入误差。需要注意的是，在创建 `BigDecimal` 对象时，应该使用字符串作为参数，而不是直接使用浮点数值，以避免浮点数精度丢失。
 
@@ -323,47 +119,13 @@ int result = sum.intValue() + i; Integer sum = new Integer(result);
 
 ### Java为什么要有Integer？
 
-Integer对应是int类型的包装类，就是把int类型包装成Object对象，对象封装有很多好处，可以把属性也就是数据跟处理这些数据的方法结合在一起，比如Integer就有parseInt()等方法来专门处理int型相关的数据。
+Integer对应是int类型的包装类，就是把int类型包装成Object对象，可以把数据跟处理这些数据的方法结合在一起，比如Integer就有parseInt()等方法来专门处理int型相关的数据。
 
-另一个非常重要的原因就是在Java中绝大部分方法或类都是用来处理类类型对象的，如ArrayList集合类就只能以类作为他的存储对象，而这时如果想把一个int型的数据存入list是不可能的，必须把它包装成类，也就是Integer才能被List所接受。所以Integer的存在是很必要的。
+在Java中，泛型只能使用引用类型，而不能使用基本类型
 
-> 泛型中的应用
+在Java中，基本类型和引用类型不能直接进行转换，必须使用包装类来实现。
 
-在Java中，泛型只能使用引用类型，而不能使用基本类型。因此，如果要在泛型中使用int类型，必须使用Integer包装类。例如，假设我们有一个列表，我们想要将其元素排序，并将排序结果存储在一个新的列表中。如果我们使用基本数据类型int，无法直接使用Collections.sort()方法。但是，如果我们使用Integer包装类，我们就可以轻松地使用Collections.sort()方法。
-
-```java
-List<Integer> list = new ArrayList<>();
-list.add(3);
-list.add(1);
-list.add(2);
-Collections.sort(list);
-System.out.println(list);
-```
-
-> 转换中的应用
-
-在Java中，基本类型和引用类型不能直接进行转换，必须使用包装类来实现。例如，将一个int类型的值转换为String类型，必须首先将其转换为Integer类型，然后再转换为String类型。
-
-```java
-int i = 10;
-Integer integer = new Integer(i);
-String str = integer.toString();
-System.out.println(str);
-```
-
-> 集合中的应用
-
-Java集合中只能存储对象，而不能存储基本数据类型。因此，如果要将int类型的数据存储在集合中，必须使用Integer包装类。例如，假设我们有一个列表，我们想要计算列表中所有元素的和。如果我们使用基本数据类型int，我们需要使用一个循环来遍历列表，并将每个元素相加。但是，如果我们使用Integer包装类，我们可以直接使用stream()方法来计算所有元素的和。
-
-```java
-List<Integer> list = new ArrayList<>();
-list.add(3);
-list.add(1);
-list.add(2);
-int sum = list.stream().mapToInt(Integer::intValue).sum();
-System.out.println(sum);
-```
-
+Java集合中只能存储对象，而不能存储基本数据类型。
 ### Integer相比int有什么优点？
 
 int是Java中的原始数据类型，而Integer是int的包装类。
@@ -381,7 +143,28 @@ Integer和 int 的区别：
 因此，基本类型数据在读写效率方面，要比包装类高效。除此之外，在64位JVM上，在开启引用压缩的情况下，一个Integer对象占用16个字节的内存空间，而一个int类型数据只占用4字节的内存空间，前者对空间的占用是后者的4倍。
 
 也就是说，不管是读写效率，还是存储效率，基本类型都比包装类高效。
+### integer为什么是16字节
+一个Java对象在内存中的布局通常由三部分组成：**对象头（Object Header）**、**实例数据（Instance Data）** 和 **对齐填充（Padding）**。
+- **Mark Word（标记字段）**: **8字节**
+    
+    - 这部分用于存储对象自身的运行时数据，如哈希码（HashCode）、GC分代年龄、锁状态标志（偏向锁、轻量级锁、重量级锁）、线程持有的锁等。在64位JVM上，它固定占用8个字节。
+        
+- **Klass Pointer（类型指针）**: **4字节**
+    
+    - 这个指针指向方法区中该对象所属的类元数据（Integer.class）。
+        
+    - 在64位系统上，一个指针原本需要8个字节。但由于开启了**指针压缩**（Compressed Oops），JVM可以用4个字节来表示一个原本需要8个字节的指针，从而节省了大量内存。因此，Klass Pointer在这里只占用4个字节。
+对象头总大小 = 8字节（Mark Word） + 4字节（Klass Pointer） = **12字节**
+- **int value**: **4字节**
+    
+    - int是Java的基本数据类型，无论是在32位还是64位JVM上，它都固定占用4个字节。
+HotSpot JVM要求对象的起始地址必须是8字节的整数倍。这样做是为了提高内存的访问效率。
 
+- **当前总大小**: 12字节（对象头） + 4字节（实例数据） = **16字节**。
+    
+- **检查对齐**: 16是8的整数倍（16 % 8 == 0）。
+    
+- **结论**: 当前大小已经满足8字节对齐的要求，因此不需要额外的字节进行填充。对齐填充为**0字节**。
 ### 说一下 integer的缓存
 
 Java的Integer类内部实现了一个静态缓存池，用于存储特定范围内的整数值对应的Integer对象。
@@ -392,7 +175,7 @@ Java的Integer类内部实现了一个静态缓存池，用于存储特定范围
 
 ### 怎么理解面向对象？简单说说封装继承多态
 
-面向对象是一种编程范式，它 **将现实世界中的事物抽象为对象** ，对象具有属性（称为字段或属性）和行为（称为方法）。面向对象编程的设计思想是以对象为中心，通过对象之间的交互来完成程序的功能，具有灵活性和可扩展性，通过封装和继承可以更好地应对需求变化。
+面向对象是一种编程范式，它 **将现实世界中的事物抽象为对象** ，对象具有属性（称为字段或属性）和行为（称为方法）。
 
 Java面向对象的三大特性包括： **封装、继承、多态** ：
 
@@ -443,10 +226,14 @@ Java面向对象的三大特性包括： **封装、继承、多态** ：
 
 ### 抽象类和普通类区别？
 
-- 实例化：普通类可以直接实例化对象，而抽象类不能被实例化，只能被继承。
-- 方法实现：普通类中的方法可以有具体的实现，而抽象类中的方法可以有实现也可以没有实现。
-- 继承：一个类可以继承一个普通类，而且可以继承多个接口；而一个类只能继承一个抽象类，但可以同时实现多个接口。
-- 实现限制：普通类可以被其他类继承和使用，而抽象类一般用于作为基类，被其他类继承和扩展使用。
+| 特性/方面                   | 抽象类 (Abstract Class)                                                     | 普通类 (Normal Class)                       |
+| ----------------------- | ------------------------------------------------------------------------ | ---------------------------------------- |
+| **实例化 (Instantiation)** | **不能**被实例化。你不能使用 `new` 关键字直接创建一个抽象类的对象。                                  | **可以**被实例化。你可以自由地使用 `new` 关键字创建它的对象。     |
+| **方法 (Methods)**        | 既可以包含**具体方法**（有方法体），也可以包含**抽象方法**（没有方法体，用 `abstract` 关键字修饰）。             | **只能**包含**具体方法**，所有方法都必须有完整的方法体。         |
+| **构造方法 (Constructor)**  | **有**构造方法。但它不是用来创建自身实例的，而是在子类创建实例时，由子类的构造方法调用，用于初始化从父类继承的成员。             | **有**构造方法，主要作用就是在创建该类的实例时进行初始化。          |
+| **继承 (Inheritance)**    | 专门为了被继承而设计。子类使用 `extends` 继承它，并且**必须实现**父类中所有的抽象方法（除非子类自己也是一个抽象类）。       | 也可以被继承，子类可以选择性地重写（Override）父类的方法，没有强制要求。 |
+| **关键字 (Keyword)**       | 使用 `abstract` 关键字来声明。                                                    | 不需要任何特殊关键字来声明。                           |
+| **设计目的**                | 主要用于**代码复用**和**模板设计**。它为一组相关的子类提供一个共同的基类，定义了它们的通用结构和行为规范，强制子类去实现某些特定的行为。 | 主要作为具体事物的实现，用于创建可以直接使用的对象，完成具体的功能。       |
 
 ### Java抽象类和接口的区别是什么？
 
@@ -457,14 +244,20 @@ Java面向对象的三大特性包括： **封装、继承、多态** ：
 
 **两者的区别：**
 
-- 实现方式：实现接口的关键字为implements，继承抽象类的关键字为extends。一个类可以实现多个接口，但一个类只能继承一个抽象类。所以，使用接口可以间接地实现多重继承。
-- 方法方式：接口只有定义，不能有方法的实现，java 1.8中可以定义default方法体，而抽象类可以有定义与实现，方法可在抽象类中实现。
-- 访问修饰符：接口成员变量默认为public static final，必须赋初值，不能被修改；其所有的成员方法都是public、abstract的。抽象类中成员变量默认default，可在子类中被重新定义，也可被重新赋值；抽象方法被abstract修饰，不能被private、static、synchronized和native等修饰，必须以分号结尾，不带花括号。
-- 变量：抽象类可以包含实例变量和静态变量，而接口只能包含常量（即静态常量）。
+| 特性/方面     | 抽象类 (Abstract Class)                                              | 接口 (Interface)                                                                                                   |
+| --------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **继承/实现** | 使用 `extends` 关键字继承，**只能单继承**。                                     | 使用 `implements` 关键字实现，**可以多实现**。                                                                                 |
+| **设计理念**  | **is-a (是一个)** 关系，体现的是一种继承关系，强调根源的相似性。                            | **can-do (能做到)** 关系，体现的是一种行为规范或能力，强调功能的实现。                                                                       |
+| **成员变量**  | 可以包含各种类型的成员变量（实例变量、静态变量），可以有不同的访问修饰符（public, protected, private）。 | **Java 8 之前**：只能包含 `public static final` 类型的常量。<br>**Java 8 之后**：规则不变，仍是公共静态常量。                                  |
+| **方法**    | 可以包含**抽象方法**和**具体方法**（有方法体的方法）。                                   | **Java 8 之前**：只能包含 `public abstract` 方法。<br>**Java 8 之后**：可以额外包含 `default` (默认) 方法和 `static` (静态) private（私有）方法。 |
+| **构造方法**  | **有**构造方法，但不能用于创建自身实例，主要用于子类构造器调用以完成初始化。                          | **没有**构造方法。                                                                                                      |
+| **访问修饰符** | 方法和变量可以是 `public`, `protected`, `private`。                        | 方法默认是 `public`，变量默认是 `public static final`。                                                                      |
 
 ### 抽象类能加final修饰吗？
 
 **不能** ，Java中的抽象类是用来被继承的，而final修饰符用于禁止类被继承或方法被重写，因此，抽象类和final修饰符是互斥的，不能同时使用。
+因为abstract就是为了必须继承，所以涉及的都不能用final修饰。
+抽象方法不能用final，非抽象方法可以用final修饰。
 
 ### 接口里面可以定义哪些方法？
 
@@ -657,7 +450,7 @@ MyClass.displayCount();   // 输出 Count: 1
 
 `final` 关键字主要有以下三个方面的作用：用于修饰类、方法和变量。
 
-- 修饰类：当 `final` 修饰一个类时，表示这个类不能被继承，是类继承体系中的最终形态。例如，Java 中的 `String` 类就是用 `final` 修饰的，这保证了 `String` 类的不可变性和安全性，防止其他类通过继承来改变 `String` 类的行为和特性。
+- 修饰类：当 `final` 修饰一个类时，表示这个类不能被继承，Java 中的 `String` 类就是用 `final` 修饰的，这保证了 `String` 类的不可变性和安全性，防止其他类通过继承来改变 `String` 类的行为和特性。
 - 修饰方法：用 `final` 修饰的方法不能在子类中被重写。比如， `java.lang.Object` 类中的 `getClass` 方法就是 `final` 的，因为这个方法的行为是由 Java 虚拟机底层实现来保证的，不应该被子类修改。
 - 修饰变量：当 `final` 修饰基本数据类型的变量时，该变量一旦被赋值就不能再改变。例如， `final int num = 10;`，这里的 `num` 就是一个常量，不能再对其进行重新赋值操作，否则会导致编译错误。对于引用数据类型， `final` 修饰意味着这个引用变量不能再指向其他对象，但对象本身的内容是可以改变的。例如， `final StringBuilder sb = new StringBuilder("Hello");`，不能让 `sb` 再指向其他 `StringBuilder` 对象，但可以通过 `sb.append(" World");`来修改字符串的内容。
 
@@ -1281,7 +1074,8 @@ public static void main(String[] args) throws NoSuchMethodException, InvocationT
 ## 注解
 
 ### 能讲一讲Java注解的原理吗？
-
+你可以把**注解看作是贴在代码（类、方法、字段等）上的“标签”**
+**定义一种元数据（标签），然后通过某种机制（工具）在特定的时候（编译期或运行时）去读取这些元数据，并根据元数据执行相应的处理逻辑。**
 注解本质是一个继承了Annotation的特殊接口，其具体实现类是Java运行时生成的动态代理类。
 
 我们通过反射获取注解时，返回的是Java运行时生成的动态代理对象。通过代理对象调用自定义注解的方法，会最终调用AnnotationInvocationHandler的invoke方法。该方法会从memberValues这个Map中索引出对应的值。而memberValues的来源是Java常量池。
@@ -1297,22 +1091,41 @@ public @interface MyAnnotation {
 ```
 
 编译后，Java 编译器会将其转换为一个继承自 `Annotation` 的接口，并生成相应的字节码文件。
+```java
 
+public interface MyAnnotation extends java.lang.annotation.Annotation {
+    public abstract String value();
+}
+```
 根据注解的作用范围，Java 注解可以分为以下几种类型：
 
 - **源码级别注解** ：仅存在于源码中，编译后不会保留（ `@Retention(RetentionPolicy.SOURCE)` ）。
+- 开发者编写一个继承自 `javax.annotation.processing.AbstractProcessor` 的注解处理器类。，
+- 在编译 (`javac`) 过程中编译器会扫描源码，如果发现了被特定注解标记的代码，就会调用对应的注解处理器。
+- 注解处理器可以访问到被标记代码的语法树信息，并根据这些信息**生成新的 Java 源码文件**，新生成的源码文件会和你的原始源码一起被编译成 `.class` 文件。
+- `@Getter`, `@Setter`, `@Data` 等注解。
+
 - **类文件级别注解** ：保留在 `.class` 文件中，但运行时不可见（ `@Retention(RetentionPolicy.CLASS)` ）。
+- 在 `.class` 文件生成后，但在被 JVM 加载前，这些工具可以读取 `.class` 文件中的注解信息，然后动态地修改字节码，织入新的逻辑。
+- **AspectJ (AOP 框架)**: 可以在编译后，将切面逻辑（如日志、事务）直接织入到 `.class` 文件的已有方法中，比 Spring AOP（基于运行时代理）的性能更高。
+- 
+
 - **运行时注解** ：保留在 `.class` 文件中，并且可以通过反射在运行时访问（ `@Retention(RetentionPolicy.RUNTIME)` ）。
+- 通过调用反射对象的 `getAnnotation()`, `isAnnotationPresent()`
+- IoC 容器：启动时扫描指定的包，通过反射找到带有 `@Component`, `@Service` 等注解的类，然后实例化它们并放入容器中。
+- 依赖注入：扫描到带有 `@Autowired` 的字段或方法，通过反射将容器中的 Bean 实例赋值给它。
+- SpringMVC：扫描带有 `@Controller` 的类和带有 `@RequestMapping` 的方法，建立 URL 和方法之间的映射关系。
 
 只有运行时注解可以通过反射机制进行解析。
 
 当注解被标记为 `RUNTIME` 时，Java 编译器会在生成的 `.class` 文件中保存注解信息。这些信息存储在字节码的属性表（Attribute Table）中，具体包括以下内容：
 
-- **RuntimeVisibleAnnotations** ：存储运行时可见的注解信息。
-- **RuntimeInvisibleAnnotations** ：存储运行时不可见的注解信息。
+- **RuntimeVisibleAnnotations** ：存储运行时可见的注解信息RUNTIME。
+- **RuntimeInvisibleAnnotations** ：存储运行时不可见的注解信息CLASS。
 - **RuntimeVisibleParameterAnnotations** 和 **RuntimeInvisibleParameterAnnotations** ：存储方法参数上的注解信息。
 
 通过工具（如 `javap -v` ）可以查看 `.class` 文件中的注解信息。
+### 运行时注解是如何解析的？
 
 注解的解析主要依赖于 Java 的反射机制。以下是解析注解的基本流程：
 
@@ -1326,37 +1139,30 @@ if (annotation != null) {
 }
 ```
 
-2、底层原理：反射机制的核心类是 `java.lang.reflect.AnnotatedElement` ，它是所有可以被注解修饰的元素（如 `Class` 、 `Method` 、 `Field` 等）的父接口。该接口提供了以下方法：
+2、底层原理：注解反射机制的核心类是 **`java.lang.reflect.AnnotatedElement`** ，它是所有可以被注解修饰的元素（如 `Class` 、 `Method` 、 `Field` 等）的父接口。该接口提供了以下方法：
 
 - `getAnnotation(Class<T> annotationClass)` ：获取指定类型的注解。
 - `getAnnotations()` ：获取所有注解。
 - `isAnnotationPresent(Class<? extends Annotation> annotationClass)` ：判断是否包含指定注解。
 
-这些方法的底层实现依赖于 JVM 提供的本地方法（Native Method），例如：
-
-- `native Annotation[] getDeclaredAnnotations0(boolean publicOnly);`
-- `native <A extends Annotation> A getAnnotation(Class<A> annotationClass);`
+这些方法的底层实现依赖于 JVM 提供的本地方法（Native Method）
 
 JVM 在加载类时会解析 `.class` 文件中的注解信息，并将其存储在内存中，供反射机制使用。
 
-因此，注解解析的底层实现主要依赖于 Java 的反射机制和字节码文件的存储。通过 `@Retention` 元注解可以控制注解的保留策略，当使用 `RetentionPolicy.RUNTIME` 时，可以在运行时通过反射 API 来解析注解信息。在 JVM 层面，会从字节码文件中读取注解信息，并创建注解的代理对象来获取注解的属性值。
 
 ### Java注解的作用域呢？
 
-注解的作用域（Scope）指的是注解可以应用在哪些程序元素上，例如类、方法、字段等。Java注解的作用域可以分为三种：
+1. **类级别作用域**：用于描述类的注解，通常放置在类定义的上面，可以用来指定类的一些属性，如类的访问级别、继承关系、注释等。
+2. **方法级别作用域**：用于描述方法的注解，通常放置在方法定义的上面，可以用来指定方法的一些属性，如方法的访问级别、返回值类型、异常类型、注释等。
+3. **字段级别作用域**：用于描述字段的注解，通常放置在字段定义的上面，可以用来指定字段的一些属性，如字段的访问级别、默认值、注释等。、
+4. **其他级别作用域：** 构造函数作用域和局部变量作用域。用来对构造函数和局部变量进行描述和注释。
 
-1. 类级别作用域：用于描述类的注解，通常放置在类定义的上面，可以用来指定类的一些属性，如类的访问级别、继承关系、注释等。
-2. 方法级别作用域：用于描述方法的注解，通常放置在方法定义的上面，可以用来指定方法的一些属性，如方法的访问级别、返回值类型、异常类型、注释等。
-3. 字段级别作用域：用于描述字段的注解，通常放置在字段定义的上面，可以用来指定字段的一些属性，如字段的访问级别、默认值、注释等。
-
-除了这三种作用域，Java还提供了其他一些注解作用域，例如构造函数作用域和局部变量作用域。这些注解作用域可以用来对构造函数和局部变量进行描述和注释。
 
 ## 异常
 
 ### 介绍一下Java异常
 
-Java异常类层次结构图： ![img](https://cdn.xiaolincoding.com//picgo/1720683900898-1d0ce69d-4b5d-41a6-a5df-022e42f8f4c5.webp) Java的异常体系主要基于两大类：Throwable类及其子类。Throwable有两个重要的子类：Error和Exception，它们分别代表了不同类型的异常情况。
-
+Java异常类层次结构图： ![img](https://cdn.xiaolincoding.com//picgo/1720683900898-1d0ce69d-4b5d-41a6-a5df-022e42f8f4c5.webp) 
 1. **Error（错误）** ：表示运行时环境的错误。错误是程序无法处理的严重问题，如系统崩溃、虚拟机错误、动态链接失败等。通常，程序不应该尝试捕获这类错误。例如，OutOfMemoryError、StackOverflowError等。
 2. **Exception（异常）** ：表示程序本身可以处理的异常条件。异常分为两大类：
 	- **非运行时异常** ：这类异常在编译时期就必须被捕获或者声明抛出。它们通常是外部错误，如文件不存在（FileNotFoundException）、类未找到（ClassNotFoundException）等。非运行时异常强制程序员处理这些可能出现的问题，增强了程序的健壮性。
@@ -1403,10 +1209,8 @@ try {
 
 ### 抛出异常为什么不用throws？
 
-如果异常是未检查异常或者在方法内部被捕获和处理了，那么就不需要使用throws。
-
-- **Unchecked Exceptions** ：未检查异常（unchecked exceptions）是继承自RuntimeException类或Error类的异常，编译器不强制要求进行异常处理。因此，对于这些异常，不需要在方法签名中使用throws来声明。示例包括NullPointerException、ArrayIndexOutOfBoundsException等。
-- **捕获和处理异常** ：另一种常见情况是，在方法内部捕获了可能抛出的异常，并在方法内部处理它们，而不是通过throws子句将它们传递到调用者。这种情况下，方法可以处理异常而无需在方法签名中使用throws。
+- **Unchecked Exceptions** ：对于未检查异常（unchecked exceptions）是继承自RuntimeException类或Error类的异常，编译器不强制要求进行异常处理。因此，对于这些异常，不需要在方法签名中使用throws来声明。示例包括NullPointerException、ArrayIndexOutOfBoundsException等。
+- **捕获和处理异常** ：更期望在方法内部捕获了可能抛出的异常，并在方法内部处理它们，而不是通过throws子句将它们传递到调用者。这种情况下，方法可以处理异常而无需在方法签名中使用throws。
 
 ### try catch中的语句运行情况
 
@@ -1420,9 +1224,9 @@ finally块中的return语句会覆盖try块中的return返回，因此，该语�
 
 ### \== 与 equals 有什么区别？
 
-对于字符串变量来说，使用"=="和"equals"比较字符串时，其比较方法不同。"=="比较两个变量本身的值，即两个对象在内存中的首地址，"equals"比较字符串包含内容是否相同。
+对于字符串变量来说，使用"\=="和"equals"比较字符串时，其比较方法不同。"\=="比较两个变量本身的值，即两个对象在内存中的首地址，"equals"比较字符串包含内容是否相同。
 
-对于非字符串变量来说，如果没有对equals()进行重写的话，"==" 和 "equals"方法的作用是相同的，都是用来比较对象在堆内存中的首地址，即用来比较两个引用变量是否指向同一个对象。
+对于非字符串变量来说，如果没有对equals()进行重写的话，"\==" 和 "equals"方法的作用是相同的，都是用来比较对象在堆内存中的首地址，即用来比较两个引用变量是否指向同一个对象。
 
 - \==：比较的是两个字符串内存地址（堆内存）的数值是否相等，属于数值比较；
 - equals()：比较的是两个字符串的内容，属于内容比较。
@@ -1477,20 +1281,21 @@ sbf.append("abc").append("def"); // 同步方法保证线程安全
 
 下面是 Java 8 主要新特性的整理表格，包含关键改进和示例说明：
 
-| **特性名称** | **描述** | **示例或说明** |
-| --- | --- | --- |
-| **Lambda 表达式** | 简化匿名内部类，支持函数式编程 | `(a, b) -> a + b` 代替匿名类实现接口 |
-| **函数式接口** | 仅含一个抽象方法的接口，可用 `@FunctionalInterface` 注解标记 | `Runnable`, `Comparator`, 或自定义接口 `@FunctionalInterface interface MyFunc { void run(); }` |
-| **Stream API** | 提供链式操作处理集合数据，支持并行处理 | `list.stream().filter(x -> x > 0).collect(Collectors.toList())` |
-| **Optional 类** | 封装可能为 `null` 的对象，减少空指针异常 | `Optional.ofNullable(value).orElse("default")` |
-| **方法引用** | 简化 Lambda 表达式，直接引用现有方法 | `System.out::println` 等价于 `x -> System.out.println(x)` |
-| **接口的默认方法与静态方法** | 接口可定义默认实现和静态方法，增强扩展性 | `interface A { default void print() { System.out.println("默认方法"); } }` |
-| **并行数组排序** | 使用多线程加速数组排序 | `Arrays.parallelSort(array)` |
-| **重复注解** | 允许同一位置多次使用相同注解 | `@Repeatable` 注解配合容器注解使用 |
-| **类型注解** | 注解可应用于更多位置（如泛型、异常等） | `List<@NonNull String> list` |
-| **CompletableFuture** | 增强异步编程能力，支持链式调用和组合操作 | `CompletableFuture.supplyAsync(() -> "result").thenAccept(System.out::println)` |
+| **特性名称**              | **描述**                                     | **示例或说明**                                                                                |
+| --------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| **Lambda 表达式**        | 简化匿名内部类，支持函数式编程                            | `(a, b) -> a + b` 代替匿名类实现接口                                                              |
+| **函数式接口**             | 仅含一个抽象方法的接口，可用 `@FunctionalInterface` 注解标记 | `Runnable`, `Comparator`, 或自定义接口 `@FunctionalInterface interface MyFunc { void run(); }` |
+| **Stream API**        | 提供链式操作处理集合数据，支持并行处理                        | `list.stream().filter(x -> x > 0).collect(Collectors.toList())`                          |
+| **Optional 类**        | 封装可能为 `null` 的对象，减少空指针异常                   | `Optional.ofNullable(value).orElse("default")`                                           |
+| **方法引用**              | 简化 Lambda 表达式，直接引用现有方法                     | `System.out::println` 等价于 `x -> System.out.println(x)`                                   |
+| **接口的默认方法与静态方法**      | 接口可定义默认实现和静态方法，增强扩展性                       | `interface A { default void print() { System.out.println("默认方法"); } }`                   |
+| **并行数组排序**            | 使用多线程加速数组排序                                | `Arrays.parallelSort(array)`                                                             |
+| **重复注解**              | 允许同一位置多次使用相同注解                             | `@Repeatable` 注解配合容器注解使用                                                                 |
+| **类型注解**              | 注解可应用于更多位置（如泛型、异常等）                        | `List<@NonNull String> list`                                                             |
+| **CompletableFuture** | 增强异步编程能力，支持链式调用和组合操作                       | `CompletableFuture.supplyAsync(() -> "result").thenAccept(System.out::println)`          |
 
 ### Lambda 表达式了解吗？
+使用的三个场景：线程runnable匿名内部类，处理集合链式操作stream过滤，函数式编程范式。
 
 Lambda 表达式它是一种简洁的语法，用于创建匿名函数，主要用于简化函数式接口（只有一个抽象方法的接口）的使用。其基本语法有以下两种形式：
 
@@ -1571,12 +1376,12 @@ public class FunctionalProgrammingExample {
 }
 ```
 
-虽然 Lambda 表达式优点蛮多的，不过也有一些缺点，比如会增加调试困难，因为 Lambda 表达式是匿名的，在调试时很难定位具体是哪个 Lambda 表达式出现了问题。尤其是当 Lambda 表达式嵌套使用或者比较复杂时，调试难度会进一步增加。
+缺点：增加调试困难，因为 Lambda 表达式是匿名的，在调试时很难定位具体是哪个 Lambda 表达式出现了问题。尤其是当 Lambda 表达式嵌套使用或者比较复杂时，调试难度会进一步增加。
 
 ### Java中stream的API介绍一下
 
 Java 8引入了Stream API，它提供了一种高效且易于使用的数据处理方式，特别适合集合对象的操作，如过滤、映射、排序等。Stream API不仅可以提高代码的可读性和简洁性，还能利用多核处理器的优势进行并行处理。让我们通过两个具体的例子来感受下Java Stream API带来的便利，对比在Stream API引入之前的传统做法。
-
+`stream()` 方法主要是在 **`java.util.Collection` 接口**中定义的一个**默认方法**，几乎所有集合都实现了stream接口
 > 案例1：过滤并收集满足条件的元素
 
 **问题场景** ：从一个列表中筛选出所有长度大于3的字符串，并收集到一个新的列表中。
@@ -1646,67 +1451,67 @@ Stream串行流与并行流的主要区别：
 
 对CPU密集型的任务来说，并行流使用ForkJoinPool线程池，为每个CPU分配一个任务，这是非常有效率的，但是如果任务不是CPU密集的，而是I/O密集的，并且任务数相对线程数比较大，那么直接用ParallelStream并不是很好的选择。
 
+**主要区别对比
+
+| 特性维度       | 串行Stream (Sequential Stream)                                         | 并行Stream (Parallel Stream)                                                                  |
+| ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **执行方式**   | **单线程**，在调用Stream操作的那个线程中执行。                                         | **多线程**，默认使用公共的`ForkJoinPool`线程池。                                                           |
+| **性能**     | 适用于数据量小、或者每个元素操作非常简单的场景。                                             | 在**多核CPU**上，处理**大数据集**且**每个元素的操作耗时较长（CPU密集型）**时，性能优势明显。                                     |
+| **结果顺序**   | **严格保证顺序**。元素的处理顺序和它们在源中的顺序一致。                                       | **不保证顺序**。除非使用`forEachOrdered`等特殊终端操作，否则元素的处理和输出顺序是随机的。                                     |
+| **线程安全**   | **通常是线程安全的**，因为所有操作都在一个线程内完成，不存在资源竞争。                                | **需要开发者自己保证线程安全**。如果在并行流中修改共享变量（如往一个共享的`List`中添加元素），必须使用线程安全的集合或同步锁，否则会产生竞态条件，导致结果不正确。      |
+| **CPU使用率** | 只会利用一个CPU核心。                                                         | 会充分利用多个CPU核心，CPU使用率会显著上升。                                                                   |
+| **适用场景**   | 1. 数据量小<br>2. 元素处理有顺序依赖<br>3. 操作本身是I/O密集型<br>4. 包含需要线程安全的操作但不想处理同步问题 | 1. **CPU密集型**操作（如复杂的数学计算）<br>2. **大数据集**<br>3. 任务可以轻松分解且合并成本低<br>4. Lambda表达式中没有副作用，不修改共享状态 |
+
 ### completableFuture怎么用的？
 
 CompletableFuture是由Java 8引入的，在Java8之前我们一般通过Future实现异步。
 
 - Future用于表示异步计算的结果，只能通过阻塞或者轮询的方式获取结果，而且不支持设置回调方法，Java 8之前若要设置回调一般会使用guava的ListenableFuture，回调的引入又会导致臭名昭著的回调地狱（下面的例子会通过ListenableFuture的使用来具体进行展示）。
 - CompletableFuture对Future进行了扩展，可以通过设置回调的方式处理计算结果，同时也支持组合操作，支持进一步的编排，同时一定程度解决了回调地狱的问题。
+#### 核心设计：Completion 栈（或链表）
 
-下面将举例来说明，我们通过ListenableFuture、CompletableFuture来实现异步的差异。假设有三个操作step1、step2、step3存在依赖关系，其中step3的执行依赖step1和step2的结果。
+##### 1. 存储回调函数
+ 线程安全
+- `CompletableFuture` 对象内部维护着一个数据结构（类似于一个栈或链表），专门用来存放后续需要执行的回调任务。
+    
+- 当你调用 `.thenApply()`, `.whenComplete()` 等方法时，你传入的函数（Lambda表达式）会被封装成一个任务对象，并被添加到这个内部的回调列表中。
+    
 
-Future(ListenableFuture)的实现（回调地狱）如下：
+##### 2. 完成结果
 
-```java
-ExecutorService executor = Executors.newFixedThreadPool(5);
-ListeningExecutorService guavaExecutor = MoreExecutors.listeningDecorator(executor);
-ListenableFuture<String> future1 = guavaExecutor.submit(() -> {
-    //step 1
-    System.out.println("执行step 1");
-    return "step1 result";
-});
-ListenableFuture<String> future2 = guavaExecutor.submit(() -> {
-    //step 2
-    System.out.println("执行step 2");
-    return "step2 result";
-});
-ListenableFuture<List<String>> future1And2 = Futures.allAsList(future1, future2);
-Futures.addCallback(future1And2, new FutureCallback<List<String>>() {
-    @Override
-    public void onSuccess(List<String> result) {
-        System.out.println(result);
-        ListenableFuture<String> future3 = guavaExecutor.submit(() -> {
-            System.out.println("执行step 3");
-            return "step3 result";
-        });
-        Futures.addCallback(future3, new FutureCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                System.out.println(result);
-            }        
-            @Override
-            public void onFailure(Throwable t) {
-            }
-        }, guavaExecutor);
-    }
+- 当异步计算任务执行完毕后，会调用 `CompletableFuture` 内部的 `complete()` 或类似方法，将计算结果（或异常）存入 `CompletableFuture` 对象中。
+    
+- 这个“存入结果”的动作是关键的触发点。
+    
 
-    @Override
-    public void onFailure(Throwable t) {
-    }}, guavaExecutor);
-```
+##### 3. 触发并执行回调
 
-CompletableFuture的实现如下：
+- 一旦结果被成功存入，`CompletableFuture` 会立即检查其内部的回调列表。
+    
+- 如果列表不为空，它会遍历这个列表，并使用刚刚存入的结果作为参数，去执行列表中的每一个回调任务。
+    
+- 执行回调的线程，根据调用的方法（是否带 `Async` 后缀）和任务完成的时机，可能是完成任务的线程，也可能是公共线程池中的线程，或者是当前线程。
+    
+CompletableFuture的实现如下（`supplyAsync` 用于执行一个带返回值的任务，这个返回的 `CompletableFuture` 对象最终会持有 `Supplier` <`U`>执行后返回的那个 `U` 类型的结果，而 `runAsync` 用于执行一个没有返回值的任务。）：
 
 ```java
 ExecutorService executor = Executors.newFixedThreadPool(5);
+//表示创建一个异步任务
+//第一个参数表示一个异步执行lambda的具体逻辑，第二个参数表示cf1异步任务提交的线程池
+//CompletableFuture.supplyAsync(Supplier<U> supplier, Executor executor)
 CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(() -> {
     System.out.println("执行step 1");
     return "step1 result";
 }, executor);
+//重载，使用默认的线程池
+//CompletableFuture.supplyAsync(Supplier<U> supplier)
 CompletableFuture<String> cf2 = CompletableFuture.supplyAsync(() -> {
     System.out.println("执行step 2");
     return "step2 result";
 });
+//链式调用，thencombine第一个参数是要和cf1结合的另一个completablefuture，第二个参数定义了cf2和cf1都完成之后的动作，result1和2自动接受cf12运行的返回结果，lambda函数的返回作为新的completablefuture对象，同时thenaccept最终阶段，接受thencombine结果
+//thenCombine(CompletionStage<? extends U> other, BiFunction<? super T,? super U,? extends V> fn)
+//thenAccept(Consumer<? super T> action)接受消费者lambda函数
 cf1.thenCombine(cf2, (result1, result2) -> {
     System.out.println(result1 + " , " + result2);
     System.out.println("执行step 3");
@@ -1725,15 +1530,274 @@ cf1.thenCombine(cf2, (result1, result2) -> {
 
 **新新语言特性：**
 
-- **Switch 语句的模式匹配** ：该功能在 Java 21 中也得到了增强。它允许在 `switch` 的 `case` 标签中使用模式匹配，使操作更加灵活和类型安全，减少了样板代码和潜在错误。例如，对于不同类型的账户类，可以在 `switch` 语句中直接根据账户类型的模式来获取相应的余额，如 `case savingsAccount sa -> result = sa.getSavings();`
-- **数组模式** ：将模式匹配扩展到数组中，使开发者能够在条件语句中更高效地解构和检查数组内容。例如， `if (arr instanceof int[] {1, 2, 3})` ，可以直接判断数组 `arr` 是否匹配指定的模式。
-- **字符串模板（预览版）** ：提供了一种更可读、更易维护的方式来构建复杂字符串，支持在字符串字面量中直接嵌入表达式。例如，以前可能需要使用 `"hello " + name + ", welcome to the geeksforgeeks!"` 这样的方式来拼接字符串，在 Java 21 中可以使用 `hello {name}, welcome to the geeksforgeeks!`这种更简洁的写法
+- **Switch 语句的模式匹配** ：不需要instenceof匹配对象的类型，作用域在->的右侧。例如，对于不同类型的账户类，可以在 `switch` 语句中直接根据账户类型的模式来获取相应的余额，如 `case savingsAccount sa -> result = sa.getSavings();`
+- **数组模式** ：将模式匹配扩展到数组中，例如， `if (arr instanceof int[] {1, 2, 3})`
+- **字符串模板（预览版）** ：支持在字符串字面量中直接嵌入表达式。例如，以前可能需要使用 `"hello " + name + ", welcome to the geeksforgeeks!"` 这样的方式来拼接字符串，在 Java 21 中可以使用 `hello {name}, welcome to the geeksforgeeks!`这种更简洁的写法
 
 **新并发特性方面：**
 
 - **虚拟线程** ：这是 Java 21 引入的一种轻量级并发的新选择。它通过共享堆栈的方式，大大降低了内存消耗，同时提高了应用程序的吞吐量和响应速度。可以使用静态构建方法、构建器或 `ExecutorService` 来创建和使用虚拟线程。
 - **Scoped Values（范围值）** ：提供了一种在线程间共享不可变数据的新方式，避免使用传统的线程局部存储，促进了更好的封装性和线程安全，可用于在不通过方法参数传递的情况下，传递上下文信息，如用户会话或配置设置。
+### 虚拟线程
+好的，我们来详细解释一下在 Java 世界中引起巨大反响的**虚拟线程 (Virtual Threads)**。这是 Java 21 (LTS) 中最终定稿的里程碑式功能，源自于著名的 **Loom 项目 (Project Loom)**。
 
+#### 核心思想：一个生动的比喻
+
+要理解虚拟线程，我们先用一个餐厅服务员的比喻：
+
+- **传统线程（平台线程）**： 想象一家餐厅只有 **10 位“精英服务员”**（平台线程）。每个服务员都非常强大，但他们有一个奇怪的规矩：当客人点了一道需要等 20 分钟的菜时（**一个阻塞的 I/O 操作**，如等待数据库返回数据），这位服务员**必须站在桌子旁一动不动地等 20 分钟**，直到菜做好。
+    
+    - **结果**：很快，10 位服务员都分别被不同的客人“占用”并站在那里干等。餐厅外面排起了长队，但没有服务员能去接待新客人。这家餐厅最多只能同时服务 10 桌客人，效率极低。
+        
+- **虚拟线程**： 现在，餐厅改变了模式。他们仍然只有 **10 位“精英服务员”**（平台线程），但他们引入了**无数张“电子订单卡”**（虚拟线程）。
+    
+    - **工作流程**：
+        
+        1. 一位服务员 A 去为 1 号桌点餐。客人点了一道需要等 20 分钟的菜。
+            
+        2. 服务员 A 将这个请求（订单卡）提交给厨房（**发起 I/O 请求**），然后**他立刻离开 1 号桌**，把订单卡留在桌上。
+            
+        3. 服务员 A 立刻去为 2 号桌、3 号桌点餐，继续提交订单给厨房。10 位服务员时刻保持忙碌，不断地在不同餐桌间穿梭、提交订单。
+            
+        4. 20 分钟后，厨房的显示屏提示 1 号桌的菜好了（**I/O 操作完成**）。
+            
+        5. **任何一位**当前空闲的服务员（比如服务员 B）看到提示后，拿起 1 号桌的订单卡，将菜送过去。
+            
+    - **结果**：10 位服务员几乎没有一秒钟是在“干等”，他们的时间被充分利用。这家餐厅现在可以**同时处理成千上万桌客人**的请求，尽管物理上还是只有 10 个服务员在跑腿。
+        
+
+---
+
+#### 虚拟线程是什么？
+
+**虚拟线程**是由 JVM 而不是操作系统（OS）管理的**轻量级线程**。它的核心是改变了 Java 线程与操作系统线程之间的关系。
+
+1. **传统线程 (Platform Threads)**
+    
+    - `java.lang.Thread` 的传统实现。
+        
+    - 它是一个对**操作系统内核线程**的薄包装。创建一个 Java 平台线程，就意味着在操作系统层面创建了一个昂贵的内核线程。
+        
+    - **缺点**：
+        
+        - **资源昂贵**：每个线程都预占了较大的内存（线程栈），创建和销毁开销大。
+            
+        - **数量有限**：操作系统能创建的线程数量是有限的（通常是几千个）。
+            
+        - **上下文切换成本高**：线程的调度由操作系统内核负责，切换成本高。
+            
+2. **虚拟线程 (Virtual Threads)**
+    
+    - 它不再与操作系统线程一一对应。
+        
+    - JVM 内部维护了一个**少量平台线程组成的线程池**（这些平台线程被称为**载体线程 Carrier Threads**，也就是比喻中的“服务员”）。
+        
+    - **成千上万甚至上百万个虚拟线程**可以运行在这个小小的载体线程池之上。JVM 负责将虚拟线程**“挂载 (mount)”** 到载体线程上执行，以及在需要时**“卸载 (unmount)”**。
+        
+
+#### 虚拟线程的“魔法”：非阻塞的阻塞
+
+这是虚拟线程最革命性的地方。当一个虚拟线程中的代码执行一个**阻塞 I/O 操作**时（例如，读取网络数据、查询数据库），会发生以下情况：
+
+1. JVM **拦截**了这个阻塞调用。
+    
+2. JVM **自动将这个虚拟线程从它的载体平台线程上“卸载”下来**，并将其作为一个内部对象保存起来，等待 I/O 操作完成。
+    
+3. 那个**载体平台线程立刻被释放**，可以去执行另一个准备就绪的虚拟线程。
+    
+
+当 I/O 操作完成后（例如，数据库返回了数据），JVM 会将那个被“卸载”的虚拟线程重新提交给调度器，等待被一个空闲的载体平台线程“挂载”并继续执行。
+
+**对开发者的意义**： 你写的代码**看起来是同步阻塞的**，非常简单直观，但其底层的执行方式**却达到了异步非阻塞的性能和吞吐量**。
+
+---
+
+#### 核心优势
+
+1. **极大地提升了吞吐量**
+    
+    - 对于 I/O 密集型应用（如 Web 服务器、微服务），可以轻松处理数十万甚至上百万的并发连接，而传统模型只能处理几千个。
+        
+2. **简化了并发编程**
+    
+    - 开发者不再需要为了性能而编写复杂的异步代码（如 `CompletableFuture` 链式调用、回调地狱）。
+        
+    - 可以直接使用简单、易于理解和调试的**“一个请求一个线程 (thread-per-request)”**模型。可以用标准的 `try-catch` 处理异常，用普通的循环和条件语句，代码逻辑像单线程一样清晰。
+        
+3. **资源成本极低**
+    
+    - 虚拟线程只是一个普通的 Java 对象，占用内存极小（几百字节），创建和切换的成本远低于平台线程。
+        
+
+#### 如何使用虚拟线程
+
+Java 21 提供了非常简洁的 API 来创建和使用虚拟线程。
+
+**1. 直接启动一个虚拟线程**
+
+Java
+
+```java
+Runnable runnable = () -> System.out.println("在虚拟线程中运行...");
+Thread.startVirtualThread(runnable);
+```
+
+**2. 使用 ExecutorService (推荐方式)** 这是最常用和推荐的方式，它会为每一个提交的任务创建一个新的虚拟线程。
+
+Java
+
+```java
+try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    for (int i = 0; i < 100_000; i++) {
+        int taskIndex = i;
+        executor.submit(() -> {
+            System.out.println("执行任务: " + taskIndex + " on thread " + Thread.currentThread());
+            Thread.sleep(Duration.ofSeconds(1)); // 模拟 I/O 阻塞
+            return taskIndex;
+        });
+    }
+} // try-with-resources 会自动关闭 executor
+```
+
+上面的代码可以瞬间创建 10 万个任务（即 10 万个虚拟线程），它们会并发执行，而底层的平台线程可能只有几个。如果用传统线程池，早就因为资源耗尽而崩溃了。
+
+#### 适用场景与注意事项
+
+- **最佳适用场景**：**I/O 密集型 (I/O-bound)** 的任务。例如，Web 应用、微服务、数据库访问、消息队列消费等，这些任务大部分时间都在等待数据返回。
+    
+- **不适用场景**：**CPU 密集型 (CPU-bound)** 的任务。例如，复杂的数学计算、视频编码等。对于这类任务，线程数应该与 CPU 核心数匹配，使用传统平台线程池是更合适的选择。
+    
+- **注意事项**：避免在虚拟线程中使用 `synchronized` 关键字锁定并执行阻塞 I/O 操作。这会导致虚拟线程被“钉”在载体线程上，使载体线程也跟着一起阻塞，从而破坏虚拟线程的性能优势。推荐使用 `java.util.concurrent.locks.ReentrantLock` 作为替代。
+### Scoped Values（范围值）
+好的，我们来详细解释一下 Java 的另一个重要新特性：**Scoped Values（范围值）**。
+
+这个特性同样与 **Project Loom** 和**虚拟线程**密切相关，并在 Java 21 (LTS) 中最终定稿。它的主要目标是提供一种全新的、更安全、更高效的方式来在线程内部以及父子线程之间共享数据，旨在**取代**问题多多的传统 `ThreadLocal` 变量。
+
+---
+
+#### 一、 “旧时代”的 `ThreadLocal` 及其问题
+
+在 Scoped Values 出现之前，如果想在同一个线程的处理流程中（例如，一个完整的 HTTP 请求处理链路）共享数据，而又不想通过方法参数层层传递，唯一的标准方式就是使用 `ThreadLocal`。
+
+`ThreadLocal` 会为每个线程创建一个独立的变量副本。比如，你可以把用户信息存入 `ThreadLocal`，这样在这个线程的任何地方都能获取到当前用户信息。
+
+**但 `ThreadLocal` 在现代高并发（尤其是虚拟线程）场景下，暴露了几个严重的设计缺陷：**
+
+1. **可变性 (Mutability)**：`ThreadLocal` 里的值是**可变的**。链路上的任何代码都可以随时调用 `.set()` 方法来修改它。这使得数据流向变得难以追踪，很容易引入 Bug，一个模块不小心修改了值，可能会让另一个模块崩溃。
+    
+2. **昂贵的继承 (`InheritableThreadLocal`)**：如果希望父线程创建的子线程能继承 `ThreadLocal` 的值，需要使用 `InheritableThreadLocal`。它的实现方式是在创建子线程时，**拷贝**父线程的所有 `ThreadLocal` 值。在可以创建**上百万个虚拟线程**的今天，这种拷贝的成本是完全无法接受的。
+    
+3. **内存泄漏风险**：`ThreadLocal` 的生命周期与线程本身绑定。尤其是在使用传统线程池时，如果一个请求处理完后**忘记调用 `.remove()` 方法清理 `ThreadLocal`**，那么这个线程被下一个请求复用时，就会读到上一个请求的“脏数据”。这是非常常见且难以排查的 Bug。
+    
+4. **作用域不明确**：`ThreadLocal` 的值一旦被设置，在线程的整个生命周期内都有效，除非被手动移除。它的作用范围是“无边界”的，不清晰。
+    
+
+---
+
+#### 二、 “新时代”的 Scoped Values
+
+Scoped Values 的设计哲学就是为了解决上述所有问题。
+
+**核心理念**：提供一种在一段**有限的代码范围内 (Scope)** 共享一个**不可变 (Immutable)** 数据的方式。
+
+我们用一个“会议通行证”的比喻来理解：
+
+- **`ThreadLocal`**：就像一个**挂在你脖子上的可擦写白板**。在会议期间，任何人都可以随时在上面写写画画（可变），你离开时如果忘了擦干净（忘记 remove），下一个戴这个牌子的人就会看到你的笔记（数据泄漏）。
+    
+- **`ScopedValue`**：就像你在进入某个**特定会议室（一个代码范围 Scope）时，门口发给你的一张打印好的、塑封的通行证**。在这个会议室里，任何人都可以**看**你的通行证（读取），但**绝对无法修改**它（不可变）。当你离开这个会议室时，通行证自动被收回（自动清理）。
+    
+
+---
+
+#### 三、如何使用 Scoped Values
+
+Scoped Values 的 API 非常简洁，核心是 `ScopedValue.where(...).run(...)` 这个模式。
+
+**代码示例：** 我们来看一个经典的 Web 服务器场景，需要在处理请求期间共享用户信息。
+
+**1. 定义一个 `ScopedValue`** 它通常被定义为一个 `public static final` 字段。
+
+Java
+
+```java
+public class Context {
+    // 定义一个 ScopedValue，它将用于携带 User 对象
+    public static final ScopedValue<User> LOGGED_IN_USER = ScopedValue.newInstance();
+}
+```
+
+**2. 在代码范围内“绑定”值并运行代码**
+
+Java
+
+```java
+// 模拟 Web 框架的入口
+public void handleRequest(Request request, Response response) {
+    User currentUser = authenticateUser(request); // 获取当前用户
+
+    // 使用 where 绑定值，然后用 run 执行代码块
+    // 在这个 run 方法的范围内，LOGGED_IN_USER.get() 都是有效的
+    ScopedValue.where(Context.LOGGED_IN_USER, currentUser)
+               .run(() -> {
+                   // === 进入了 Scoped Value 的作用域 ===
+
+                   // 调用业务逻辑，我们不需要再传递 User 对象
+                   new OrderService().processOrder();
+
+                   // === 离开作用域，绑定自动失效 ===
+               });
+}
+
+// 业务逻辑深处的某个类
+public class OrderService {
+    public void processOrder() {
+        // 直接通过 isBound() 检查并 get() 获取值
+        if (Context.LOGGED_IN_USER.isBound()) {
+            User user = Context.LOGGED_IN_USER.get();
+            System.out.println("正在为用户 " + user.getName() + " 处理订单...");
+            // ... 业务逻辑 ...
+            new PaymentService().charge();
+        }
+    }
+}
+
+// 支付服务，更深一层
+public class PaymentService {
+    public void charge() {
+        // 在这里同样可以获取到 User 对象
+        User user = Context.LOGGED_IN_USER.get();
+        System.out.println("正在向用户 " + user.getName() + " 收费...");
+    }
+}
+```
+
+**这个模式的关键点：**
+
+- **`where(key, value)`**: 指定要绑定哪个 `ScopedValue` 和要绑定的具体值。这个操作**不会立即执行**，而是返回一个 `Carrier`（携带者）对象。
+    
+- **`.run(runnable)`**: 传入一个 `Runnable`，这个 Lambda 表达式内的所有代码，就是该 Scoped Value 生效的“范围”。
+    
+- **自动清理**: 一旦 `.run()` 方法执行结束（无论是正常结束还是抛出异常），`LOGGED_IN_USER` 与 `currentUser` 的绑定关系就**自动解除**了。完全不需要手动清理！
+    
+
+---
+
+#### 四、Scoped Values 的核心优势
+
+1. **不可变性 (Immutability)** 在一个作用域内，`ScopedValue` 的值只能在入口处**绑定一次**，之后无法被任何代码修改。这使得数据流清晰可控，极大地提升了程序的健壮性。
+    
+2. **清晰且有限的作用域 (Clear and Bounded Scope)** 值的生命周期与 `run` 方法的代码块完全绑定，代码结构本身就清晰地定义了数据的作用范围。
+    
+3. **高效的继承与共享 (Efficient Sharing)** Scoped Values 是为虚拟线程量身定做的。当你在一个 `run` 的作用域内创建新的**子虚拟线程**时，子线程可以**极其高效地、零成本地继承**父线程的所有范围值。它避免了 `InheritableThreadLocal` 昂贵的拷贝开销，是虚拟线程环境下共享数据的最佳实践。
+    
+4. **杜绝内存泄漏 (Leak-Proof)** 由于其自动清理机制，彻底解决了 `ThreadLocal` 令人头疼的内存泄漏和数据污染问题。
+    
+
+#### 总结
+
+**Scoped Values** 是对 Java 线程本地化数据共享机制的一次现代化重构。它通过强制**不可变性**和**结构化的作用域**，解决了 `ThreadLocal` 长期存在的各种问题，为编写健壮、高效、易于理解的高并发代码提供了强有力的支持。
+
+在拥抱虚拟线程的时代，**使用 Scoped Values 替代 `ThreadLocal`** 将成为新的标准和最佳实践。
 ## 序列化
 
 ### 怎么把一个对象从一个jvm转移到另一个jvm?
@@ -1745,26 +1809,39 @@ cf1.thenCombine(cf2, (result1, result2) -> {
 
 ### 序列化和反序列化让你自己实现你会怎么做?
 
-Java 默认的序列化虽然实现方便，但却存在安全漏洞、不跨语言以及性能差等缺陷。
-
-- 无法跨语言： Java 序列化目前只适用基于 Java 语言实现的框架，其它语言大部分都没有使用 Java 的序列化框架，也没有实现 Java 序列化这套协议。因此，如果是两个基于不同语言编写的应用程序相互通信，则无法实现两个应用服务之间传输对象的序列化与反序列化。
-- 容易被攻击：Java 序列化是不安全的，我们知道对象是通过在 ObjectInputStream 上调用 readObject() 方法进行反序列化的，这个方法其实是一个神奇的构造器，它可以将类路径上几乎所有实现了 Serializable 接口的对象都实例化。这也就意味着，在反序列化字节流的过程中，该方法可以执行任意类型的代码，这是非常危险的。
-- 序列化后的流太大：序列化后的二进制流大小能体现序列化的性能。序列化后的二进制数组越大，占用的存储空间就越多，存储硬件的成本就越高。如果我们是进行网络传输，则占用的带宽就更多，这时就会影响到系统的吞吐量。
+使用Java 默认的序列化
+优点：简单
+缺点：
+- **无法跨语言**： Java 序列化目前只适用基于 Java 语言实现的框架
+- **容易被攻击**：Java 序列化是不安全的，对象是通过在 ObjectInputStream 上调用 readObject() 方法进行反序列化的，但它同时可以将类路径上所有实现了 Serializable 接口的对象都实例化。这也就意味着，在反序列化字节流的过程中，该方法可以执行任意类型的代码，这是非常危险的。
+- **序列化后的流太大**：序列化后的二进制流大小能体现序列化的性能。序列化后的二进制数组越大，占用的存储空间就越多，存储硬件的成本就越高。如果我们是进行网络传输，则占用的带宽就更多，这时就会影响到系统的吞吐量。
 
 我会考虑用主流序列化框架，比如FastJson、Protobuf来替代Java 序列化。
+#### Protobuf
+创建一个名为 `user_profile.proto` 的文件，用来定义我们的 `User` 数据结构。
+这个命令会读取 `user_profile.proto` 文件，并根据我们指定的 `java_package` 选项，在当前目录下生成一个 Java 文件：`com/example/models/UserProfileProto.java`
+这个 `UserProfileProto.java` 文件就是 Protobuf 的魔法所在。它包含了：
 
-如果追求性能的话，Protobuf 序列化框架会比较合适，Protobuf 的这种数据存储格式，不仅压缩存储数据的效果好， 在编码和解码的性能方面也很高效。Protobuf 的编码和解码过程结合.proto 文件格式，加上 Protocol Buffer 独特的编码格式，只需要简单的数据运算以及位移等操作就可以完成编码与解码。可以说 Protobuf 的整体性能非常优秀。
+- 一个外部类 `UserProfileProto`。
+    
+- 一个内部类 `User`，对应我们定义的 `message User`。
+    
+- 一个 `User.Builder` 类，用于创建和设置 `User` 对象。
+    
+- 所有字段的 getters 和 setters。
+    
+- **序列化** (`toByteArray()`) 和**反序列化** (`parseFrom()`) 的方法。
+
+然后用`UserProfileProto.java` 这个文件对服务端和客户端进行加密和解密
 
 ### 将对象转为二进制字节流具体怎么实现?
 
 其实，像序列化和反序列化，无论这些可逆操作是什么机制，都会有对应的 **处理和解析协议** ，例如加密和解密，TCP的粘包和拆包，序列化机制是通过序列化协议来进行处理的，和 class 文件类似，它其实是定义了序列化后的字节流格式，然后对此格式进行操作，生成符合格式的字节流或者将字节流解析成对象。
-
+**字节码本质上是一种二进制码，但它是一种非常特殊的、非本地（non-native）的二进制码。**
 在Java中通过序列化对象流来完成序列化和反序列化：
 
 - ObjectOutputStream：通过writeObject(）方法做序列化操作。
 - ObjectInputStrean：通过readObject()方法做反序列化操作。
-
-只有实现了Serializable或Externalizable接口的类的对象才能被序列化，否则抛出异常！
 
 实现对象序列化：
 
@@ -1812,47 +1889,80 @@ try {
 }
 ```
 
-通过以上步骤，对象obj会被序列化并写入到文件"object.ser"中，然后通过反序列化操作，从文件中读取字节流并恢复为对象newObj。这种方式可以方便地将对象转换为字节流用于持久化存储、网络传输等操作。需要注意的是，要确保类实现了Serializable接口，并且所有成员变量都是Serializable的才能被正确序列化。
-
-## 设计模式
-
-### volatile和sychronized如何实现单例模式
-
-```javascript
-public class SingleTon {
-
-    // volatile 关键字修饰变量 防止指令重排序
-    private static volatile SingleTon instance = null;
-    private SingleTon(){}
-     
-    public static  SingleTon getInstance(){
-        if(instance == null){
-            //同步代码块 只有在第一次获取对象的时候会执行到 ，第二次及以后访问时 instance变量均非null故不会往下执行了 直接返回啦
-            synchronized(SingleTon.class){
-                if(instance == null){
-                    instance = new SingleTon();
-                }
-            }
-        }
-        return instance;
-    }
-}
-```
-
-正确的双重检查锁定模式需要需要使用 volatile。volatile主要包含两个功能。
-
-- 保证可见性。使用 volatile 定义的变量，将会保证对所有线程的可见性。
-- 禁止指令重排序优化。
-
-由于 volatile 禁止对象创建时指令之间重排序，所以其他线程不会访问到一个未初始化的对象，从而保证安全性。
-
-### 代理模式和适配器模式有什么区别？
-
-- **目的不同** ：代理模式主要关注控制对对象的访问，而适配器模式则用于接口转换，使不兼容的类能够一起工作。
-- **结构不同** ：代理模式一般包含抽象主题、真实主题和代理三个角色，适配器模式包含目标接口、适配器和被适配者三个角色。
-- **应用场景不同** ：代理模式常用于添加额外功能或控制对对象的访问，适配器模式常用于让不兼容的接口协同工作。
+要确保类实现了Serializable或Externalizable接口，并且所有成员变量都是Serializable的才能被正确序列化。否则抛出异常
 
 ## I/O
+### 什么是java的网络IO高并发编程？
+使用 Java 技术栈来构建能够**同时处理成千上万甚至上百万个网络连接**的能力和相关的技术模型
+**操作系统 (Operating System)** 在其中扮演了至关重要的**中介**角色。
+**I/O 操作（尤其是网络 I/O）是缓慢且不可预测的，而 CPU 资源是宝贵的**。如何在高并发场景下，不让大量的线程因为等待缓慢的 I/O 而白白浪费掉宝贵的系统资源，这就是 Java 网络 I/O 模型不断演进的根本原因
+
+BIO->NIO->AIO->虚拟线程
+#### 1. 文件 I/O (File I/O)
+
+- **双方是谁**：你的**应用程序进程** vs. **文件系统** (最终对应物理的硬盘或固态硬盘)。
+    
+- **操作**：
+    
+    - **Input**: 应用程序从文件中读取数据到内存。
+        
+    - **Output**: 应用程序将内存中的数据写入到文件。
+        
+
+#### 2. 网络 I/O (Network I/O)
+
+- **双方是谁**：你服务器上的**应用程序进程** vs. 另一台计算机上的**远程应用程序进程**。
+    
+- **操作**：
+    
+    - **Input**: 你的应用程序从网络套接字 (Socket) 中读取远程进程发来的数据。
+        
+    - **Output**: 你的应用程序向网络套接字 (Socket) 中写入数据，发送给远程进程。
+        
+
+#### 3. 控制台 I/O (Console I/O)
+
+- **双方是谁**：你的**应用程序进程** vs. **人类用户**。
+    
+- **操作**：
+    
+    - **Input**: 应用程序从标准输入 (`System.in`) 读取用户通过**键盘**输入的数据。
+        
+    - **Output**: 应用程序向标准输出 (`System.out`) 写入数据，最终显示在用户的**屏幕**上。
+        
+
+#### 4. 数据库 I/O (Database I/O)
+
+- **双方是谁**：你的**应用程序进程** vs. **数据库服务进程** (例如 MySQL Server)。
+    
+- **操作**：这也是一种特殊的网络 I/O。
+    
+    - **Input**: 应用程序从数据库连接中读取查询结果。
+        
+    - **Output**: 应用程序通过数据库连接发送 SQL 查询语句。
+#### 总结
+
+| I/O 模型   | 编程模型  | 核心思想     | 优点            | 缺点          |
+| -------- | ----- | -------- | ------------- | ----------- |
+| **BIO**  | 同步阻塞  | 一个连接一个线程 | 简单直观          | 伸缩性差，无法高并发  |
+| **NIO**  | 同步非阻塞 | I/O 多路复用 | **伸缩性极高**     | **编程模型复杂**  |
+| **AIO**  | 异步非阻塞 | 事件回调     | 真异步           | 应用不广，编程复杂   |
+| **虚拟线程** | 同步阻塞  | 轻量级线程    | **伸缩性高且编程简单** | 不适合CPU密集型任务 |
+- **同步 (Synchronous) vs. 异步 (Asynchronous)**
+    
+    - 这个维度的核心在于：**由谁来负责检查 I/O 操作是否完成**。
+        
+    - **同步**：**应用程序自己**负责。你的代码发起 I/O 请求后，必须通过某种方式（阻塞等待或者不断轮询）来主动检查操作是否就绪或完成。
+        
+    - **异步**：**操作系统 (Kernel)** 负责。你的代码发起 I/O 请求后就立刻返回，当操作完成后，由操作系统来**通知**你的应用程序（例如，通过调用你预先注册的回调函数）。
+        
+- **阻塞 (Blocking) vs. 非阻塞 (Non-blocking)**
+    
+    - 这个维度的核心在于：**发起 I/O 请求的线程会不会被挂起**。
+        
+    - **阻塞**：当线程发起一个 I/O 操作（如 `read()`) 时，如果数据还没准备好，这个线程就会被**挂起（睡眠）**，直到数据准备好为止。
+        
+    - **非阻塞**：当线程发起一个 I/O 操作时，无论数据是否准备好，调用都会**立即返回**。如果没准备好，它可能会返回一个特殊的值（例如 0），然后你的代码需要决定下一步做什么（比如过会儿再试）。
 
 ### Java怎么实现网络IO高并发编程？
 
@@ -1878,18 +1988,161 @@ NIO是一种同步非阻塞的IO模型，所以也可以叫NON-BLOCKINGIO。同�
 
 同步的核心就Selector（I/O多路复用），Selector代替了线程本身轮询IO事件，避免了阻塞同时减少了不必要的线程消耗；非阻塞的核心就是通道和缓冲区，当IO事件就绪时，可以通过写到缓冲区，保证IO的成功，而无需线程阻塞式地等待。
 
-NIO由一个专门的线程处理所有IO事件，并负责分发。事件驱动机制，事件到来的时候触发操作，不需要阻塞的监视事件。线程之间通过wait,notify通信，减少线程切换。
+NIO由一个专门的线程处理所有IO事件，并负责分发。**事件驱动机制**，事件到来的时候触发操作，不需要阻塞的监视事件。**线程之间通过wait,notify通信**，减少线程切换。
 
-NIO主要有三大核心部分：Channel(通道)，Buffer(缓冲区), Selector。传统IO基于字节流和字符流进行操作，而NIO基于Channel和Buffer(缓冲区)进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。
+NIO主要有三大核心部分：Channel(通道)，Buffer(缓冲区), Selector。**传统IO基于字节流和字符流进行操作，而NIO基于Channel和Buffer(缓冲区)进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。**
 
 Selector(选择区)用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个线程可以监听多个数据通道。
+更准确地说，Selector 应该被理解为一个**对象**、一个**工具**，或者一个**中介**。而**线程 (Thread)** 才是那个**使用**这个工具的**主动执行者**。
+NIO 通过引入 Channel、Buffer 和 Selector 三大组件，构建了一套 I/O 多路复用的、同步非阻塞的事件驱动模型。其核心在于，允许单个线程通过阻塞在 Selector 上来高效地监控和管理成千上万个非阻塞的 Channel。当任意 Channel 上的 I/O 事件就绪时，Selector 会唤醒该线程，线程则根据事件类型，通过 Buffer 对数据进行处理，从而以极少的线程资源实现超高的并发连接处理能力。
 
 ![img](https://cdn.xiaolincoding.com//picgo/1716018476312-e5525ca7-acf8-46b1-8fff-8a7d22db5304.webp)
 
 ### 你知道有哪个框架用到NIO了吗？
 
 **Netty。**
+#### 一、 Netty 解决了什么核心问题？
 
+我们之前讨论过，虽然 NIO 性能极高，但直接使用它来编程是一场噩梦。开发者需要处理：
+
+1. **API 复杂性**：手动管理 `Buffer` 的 `flip()`, `clear()` 等状态，非常繁琐且容易出错。
+    
+2. **CPU 空转 Bug**：需要非常小心地处理 `OP_READ` 事件的注册与取消，否则容易导致 `Selector` 空轮询，CPU 占用 100%。
+    
+3. **TCP “半包/粘包”问题**：TCP 是流式协议，数据包可能被拆分或合并。NIO 本身不处理这个问题，需要开发者自己解析数据流，非常复杂。
+    
+4. **连接管理和状态跟踪**：需要手动管理所有 `SelectionKey` 的状态，处理连接的断开、异常等。
+    
+5. **空洞的协议支持**：NIO 只提供了基础的 TCP/UDP 传输能力，如果要实现 HTTP、WebSocket 等上层协议，需要自己编写大量的编解码代码。
+    
+
+**Netty 作为一个框架，完美地解决了以上所有问题。** 它对 NIO 进行了深度封装和优化，提供了一套更高级、更易用的 API。
+
+---
+
+#### 二、 Netty 的核心架构组件
+
+Netty 的强大之处在于其优雅、模块化的架构设计。理解了下面几个核心组件，就理解了 Netty 的工作方式。
+
+##### 1. `EventLoop` & `EventLoopGroup` (事件循环与事件循环组)
+
+这是 Netty 的**并发模型和“引擎”**。
+
+- `EventLoop` 是一个**死循环**，在其生命周期内，它不断地检查是否有新的 I/O 事件，并处理它们。**一个 `EventLoop` 通常只由一个线程驱动**，这避免了多线程并发问题。
+    
+- `EventLoop` 内部就封装了我们之前讨论的 Java NIO `Selector`。
+    
+- `EventLoopGroup` 是一组 `EventLoop` 的集合，可以看作是一个**线程池**。
+    
+
+Netty 最经典的并发模型是**“主从 Reactor 模式”**：
+
+- **Boss Group (老板/主循环组)**：通常只包含 **1 个 `EventLoop`**（即 1 个线程）。它的唯一职责就是监听服务器端口，**接受新的客户端连接 (`accept` 事件)**，然后将建立好的连接**交给 Worker Group**。
+    
+- **Worker Group (工人/从循环组)**：通常包含**多个 `EventLoop`**（线程数一般是 CPU 核心数的 2 倍）。它负责处理所有已建立连接的**读写事件 (`read`, `write` 事件)** 和业务逻辑。
+    
+
+这种“职责分离”的模式使得连接的接受和数据的读写互不干扰，性能极高。
+
+##### 2. `Channel` (通道)
+
+这是 Netty 对网络连接的抽象，可以看作是 Java NIO `Channel` 的增强版。它代表了一个到实体（如硬件设备、文件、网络套接字）的开放连接，能够进行 I/O 操作。
+
+##### 3. `ChannelPipeline` & `ChannelHandler` (通道流水线与处理器)
+
+这是 Netty **最核心、最精妙**的设计，也是开发者主要打交道的地方。
+
+- **`ChannelPipeline`**：
+    
+    - 每个 `Channel` 都拥有一个自己的 `ChannelPipeline`。
+        
+    - 它可以被看作一条**流水线**，上面流动着入站（Inbound）和出站（Outbound）的 I/O 事件。
+        
+- **`ChannelHandler`**：
+    
+    - 就是流水线上的一个个**处理站**。你通过将多个 `Handler` 添加到 `Pipeline` 中，来构建你的处理逻辑。
+        
+    - **`ChannelInboundHandler` (入站处理器)**：处理**入站**事件，通常是**读取**客户端数据、解码、执行业务逻辑等。事件从 `Pipeline` 的头部流向尾部。
+        
+    - **`ChannelOutboundHandler` (出站处理器)**：处理**出站**事件，通常是**写入**数据到客户端、编码等。事件从 `Pipeline` 的尾部流向头部。
+        
+
+**这个设计的巨大优势**：
+
+- **高度解耦**：每个 `Handler` 只关心自己的逻辑。例如，你可以有一个专门负责解码的 `Handler`，一个负责编码的 `Handler`，一个负责处理心跳的 `Handler`，一个负责执行核心业务的 `Handler`。
+    
+- **逻辑清晰，可复用**：整个数据处理流程被分解成一系列清晰的步骤，非常易于维护和复用。
+    
+
+##### 4. `ByteBuf` (字节缓冲区)
+
+这是 Netty 对 Java NIO `ByteBuffer` 的重大改进，解决了其所有痛点。
+
+- **无需 `flip()`**：`ByteBuf` 内部维护了**两个独立的指针**：`readerIndex` (读指针) 和 `writerIndex` (写指针)，使得读写切换不再需要调用 `flip()`，极大简化了操作。
+    
+- **零拷贝 (Zero-Copy)**：提供了多种机制，可以在不进行内存复制的情况下，高效地对数据进行切片、组合等操作。
+    
+- **池化 (Pooling)**：内置了高性能的内存池，可以重用 `ByteBuf` 对象，避免了频繁创建和销毁对象带来的 GC 压力。
+    
+- **自动扩容**：当写入数据超过容量时，`ByteBuf` 会自动扩容，非常方便。
+
+**池化 (Pooling)** 是一种非常重要的软件设计模式和性能优化技术。其核心思想是：**对于那些创建成本高昂或数量有限的资源，预先创建并维护一个“资源池” (Pool)，当需要使用资源时，从池中借用；使用完毕后，再将其归还到池中，以供后续重复使用。**
+
+简单来说，池化的精髓就是 **“复用代替创建”**
+##### 5. `Future` & `Promise`
+
+Netty 中所有的 I/O 操作都是**异步**的。当你调用一个 `write()` 方法时，它会**立即返回**一个 `ChannelFuture` 对象，而不会等待操作真正完成。
+
+- **`ChannelFuture`**：你可以给这个 `Future` 对象添加一个监听器 (`listener`)。当 I/O 操作最终完成时（无论成功还是失败），这个监听器就会被**回调**。
+    
+- 这种机制让你的线程不必等待 I/O，可以立刻去处理其他任务，是实现高吞吐量的关键。
+
+**Netty 框架内部与 `Selector` 交互**。开发者完全看不到 `Selector`，只与 `Channel`, `Pipeline`, `Future` 等高级抽象交互。
+
+---
+
+#### Netty 服务器的工作流程（简化版）
+
+Java
+
+```
+// 1. 创建 Boss 和 Worker 两个 EventLoopGroup
+EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+EventLoopGroup workerGroup = new NioEventLoopGroup();
+
+try {
+    // 2. 创建服务器启动引导类 ServerBootstrap
+    ServerBootstrap b = new ServerBootstrap();
+    b.group(bossGroup, workerGroup) // 3. 配置 Boss 和 Worker 组
+     .channel(NioServerSocketChannel.class) // 4. 指定使用 NIO 的 Channel
+     .childHandler(new ChannelInitializer<SocketChannel>() { // 5. 设置 Worker 组的处理逻辑
+         @Override
+         public void initChannel(SocketChannel ch) throws Exception {
+             // 6. 获取 Pipeline，并添加多个 Handler
+             ChannelPipeline p = ch.pipeline();
+             p.addLast(new MyDecoder()); // 添加解码器
+             p.addLast(new MyEncoder()); // 添加编码器
+             p.addLast(new MyBusinessLogicHandler()); // 添加业务处理器
+         }
+     });
+
+    // 7. 绑定端口，启动服务器 (这是一个异步操作)
+    ChannelFuture f = b.bind(8080).sync();
+    
+    // 等待服务器关闭
+    f.channel().closeFuture().sync();
+} finally {
+    // 优雅地关闭
+    workerGroup.shutdownGracefully();
+    bossGroup.shutdownGracefully();
+}
+```
+
+#### 总结
+
+**Netty 是一个建立在 Java NIO 之上的高级框架，它通过提供一套精心设计的、易于使用的抽象（如 `EventLoop`, `Pipeline`, `ByteBuf`），将开发者从 NIO 复杂的底层细节中解放出来。**
+
+它为你处理了所有网络编程中的脏活累活（事件循环、并发控制、半包粘包、编解码等），让你能够像搭建乐高一样，通过组合不同的 `Handler` 来快速、安全地构建出极其稳定和高性能的网络应用。几乎所有知名的 Java 开源项目（如 Dubbo, gRPC, Elasticsearch, Flink 等）的网络层都使用了 Netty
 Netty 的 I/O 模型是基于非阻塞 I/O 实现的，底层依赖的是 NIO 框架的多路复用器 Selector。采用 epoll 模式后，只需要一个线程负责 Selector 的轮询。当有数据处于就绪状态后，需要一个事件分发器（Event Dispather），它负责将读写事件分发给对应的读写事件处理器（Event Handler）。事件分发器有两种设计模式：Reactor 和 Proactor，Reactor 采用同步 I/O， Proactor 采用异步 I/O。
 
 ![img](https://cdn.xiaolincoding.com//picgo/1715424254674-7a7159b1-d1ed-4236-ae18-09421c9837ed.png)
@@ -1928,11 +2181,105 @@ List<Student> students = new ArrayList<>();
 Collections.sort(students);
 ```
 
+### 对象的比较
+
+#### 1. `Comparable<T>` 接口 (内部比较器 / 自然顺序)
+
+- **原理**：让一个类自己实现 `Comparable` 接口，意味着这个类的对象天生就**具有了“可比较性”**，这被称为**自然顺序 (Natural Ordering)**。
+    
+- **核心方法**：`int compareTo(T other)`
+    
+- **返回值约定**：
+    
+    - 返回**负整数**：表示 `this` 对象小于 `other` 对象。
+        
+    - 返回**零**：表示 `this` 对象等于 `other` 对象。
+        
+    - 返回**正整数**：表示 `this` 对象大于 `other` 对象。
+        
+- **适用场景**：当一个类有非常明确、唯一的排序规则时（例如，`Integer` 按数值大小，`String` 按字典顺序）。
+    
+
+**示例（让 `Person` 按年龄排序）：**
+
+Java
+
+```
+public class Person implements Comparable<Person> {
+    // ... name 和 age 字段 ...
+
+    @Override
+    public int compareTo(Person other) {
+        // 按照 age 升序排序
+        return Integer.compare(this.age, other.age);
+        // 如果 this.age < other.age, 返回负数
+        // 如果 this.age == other.age, 返回 0
+        // 如果 this.age > other.age, 返回正数
+    }
+}
+```
+
+#### 2. `Comparator<T>` 接口 (外部比较器 / 定制顺序)
+
+- **原理**：创建一个**独立的类**来实现 `Comparator` 接口，用于定义一种**特定的、外部的**比较规则。
+    
+- **核心方法**：`int compare(T o1, T o2)`
+    
+- **返回值约定**：与 `compareTo` 类似。
+    
+- **适用场景**：
+    
+    - 当一个类没有实现 `Comparable`，但你又想对它进行排序。
+        
+    - 当一个类需要**多种不同的排序方式**时（例如，`Person` 有时需要按年龄排序，有时需要按姓名排序）。
+        
+    - 当你无法修改类的源代码时。
+        
+
+**示例（创建一个按姓名排序的比较器）：**
+
+Java
+
+```
+import java.util.Comparator;
+
+public class PersonNameComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person p1, Person p2) {
+        // 按照 name 的字典顺序排序
+        return p1.getName().compareTo(p2.getName());
+    }
+}
+```
+
+**在 Java 8+ 中，使用 Lambda 表达式和 `Comparator` 的静态辅助方法会更简洁：**
+
+Java
+
+```
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+// ...
+List<Person> people = new ArrayList<>();
+// ... add people ...
+
+// 使用 Lambda 表达式按姓名排序
+people.sort((p1, p2) -> p1.getName().compareTo(p2.getName()));
+
+// 使用 Comparator.comparing 静态方法，更简洁、更优雅！
+people.sort(Comparator.comparing(Person::getName));
+
+// 甚至可以实现更复杂的排序，比如先按年龄排，再按姓名排
+people.sort(Comparator.comparing(Person::getAge)
+                      .thenComparing(Person::getName));
+```
 ### Native方法解释一下
 
 在Java中，native方法是一种特殊类型的方法，它允许Java代码调用外部的本地代码，即用C、C++或其他语言编写的代码。native关键字是Java语言中的一种声明，用于标记一个方法的实现将在外部定义。
 
-在Java类中，native方法看起来与其他方法相似，只是其方法体由native关键字代替，没有实际的实现代码。例如：
+在Java类中，native方法看起来与其他方法相似，只是其方法体由**native关键字**代替，没有实际的实现代码。例如：
 
 ```java
 public class NativeExample {
@@ -1946,15 +2293,62 @@ public class NativeExample {
 2. **编写本地代码** ：使用C/C++编写本地方法的实现，并确保方法签名与生成的头文件中的原型匹配。
 3. **编译本地代码** ：将C/C++代码编译成动态链接库（DLL，在Windows上），共享库（SO，在Linux上）
 4. **加载本地库** ：在Java程序中，使用System.loadLibrary()方法来加载你编译好的本地库，这样JVM就能找到并调用native方法的实现了。
+### 水平触发和边缘触发
+#### 1. 水平触发 (Level-Triggered, LT)
+
+这是 `select`、`poll` 以及 `epoll` 的**默认工作模式**，也是 **Java NIO `Selector`** 的行为模式。
+
+- **定义**：只要文件描述符（Channel）处于某个你感兴趣的状态（例如，可读或可写），`select()` 调用就会**持续地返回**，通知你这个事件。
+    
+- **对于读事件 (`OP_READ`)**：
+    
+    - **条件**：只要操作系统的 Socket 接收缓冲区中**有数据**。
+        
+    - **行为**：`selector.select()` 就会被唤醒。如果你这次只读取了缓冲区的一部分数据，缓冲区里**仍然还有数据**，那么在下一次循环中调用 `select()` 时，它会**立刻再次返回**，继续通知你这个 Channel 是可读的。
+        
+- **编程视角**：
+    
+    - **优点**：编程相对简单，容错性好。即使你这次因为某种原因没有处理完所有数据，没关系，下一次循环 `Selector` 还会“唠叨”你，提醒你去处理。你**不容易丢失事件**。
+        
+    - **缺点**：可能导致**惊群效应**和**CPU 100% 空转**。正如我们之前讨论的，如果你的应用程序 Buffer 满了，导致你无法从 Socket 缓冲区读取数据，LT 模式会不断地、徒劳地唤醒你的线程，造成 CPU 资源浪费。
+        
 
 ---
 
-[![](https://cdn.xiaolincoding.com/mianshiya.png)](https://mianshiya.com/?shareCode=xeu1wi)
+#### 2. 边缘触发 (Edge-Triggered, ET)
 
-最新的图解文章都在公众号首发，别忘记关注哦！！如果你想加入百人技术交流群，扫码下方二维码回复「加群」。
+这是 `epoll` 特有的、更高性能的模式。高性能网络框架如 Netty 会使用它。
 
-![img](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost3@main/%E5%85%B6%E4%BB%96/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BB%8B%E7%BB%8D.png)
+- **定义**：只有当文件描述符（Channel）的**状态发生变化**时，`select()` 才会返回一次，通知你这个事件。
+    
+- **对于读事件 (`OP_READ`)**：
+    
+    - **条件**：仅在 Socket 接收缓冲区的数据量**从 0 变为 >0 的那一瞬间**（或者有新数据追加进来时）。
+        
+    - **行为**：`selector.select()` 只会唤醒你**一次**。操作系统会假设你已经知道了这个事件，并且会处理它。如果你这次没有把缓冲区的数据全部读完，操作系统**不会再次**为这些“剩余”的数据通知你。它只会等到**下一次新的数据**到达时，才会再次触发通知。
+        
+- **编程视角**：
+    
+    - **优点**：效率更高。它极大地减少了 `select()` 被唤醒的次数，避免了 LT 模式下的空转问题。线程只在真正有新工作要做时才被唤醒。
+        
+    - **缺点**：编程复杂度**极高**，且非常容易出错。
+        
+        - **必须一次性读完**：当收到一个读事件通知时，你必须在一个非阻塞的循环中持续调用 `read()`，直到它返回 -1 (连接关闭) 或抛出 `EWOULDBLOCK` / `EAGAIN` 异常（表示数据已经读完了），否则就会有数据残留在缓冲区而你却永远不会再收到通知，导致连接“饿死”。
+            
+        - **事件可能丢失**：如果你处理不当，就相当于错过了唯一的通知，导致数据处理延迟或丢失。
+            
 
-阅读全文
+---
 
-登录后查看评论
+#### 总结对比
+
+|特性|水平触发 (Level-Triggered, LT)|边缘触发 (Edge-Triggered, ET)|
+|---|---|---|
+|**触发时机**|只要条件**满足**，就持续触发|仅在状态**发生变化**时，触发一次|
+|**通知次数**|**多次**，直到条件消失|**仅一次**，在状态变化时|
+|**编程复杂度**|**较低**，不易丢失事件|**较高**，必须一次性处理完|
+|**潜在问题**|**CPU 空转** (Busy-Spin)|事件丢失，连接“饿死”|
+|**性能**|较好|**更高**|
+|**典型代表**|Java NIO `Selector` (默认行为)|Linux `epoll` 的 `EPOLLET` 模式 / Netty|
+
+导出到 Google 表格
