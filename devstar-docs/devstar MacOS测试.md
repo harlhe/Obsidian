@@ -1,11 +1,6 @@
 ### Feature Description
 
-# [](https://www.devstar.cn/devstar/devstar/issues/131#%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E7%9F%A9%E9%98%B5)跨平台安装测试测试环境矩阵
-
-- Linux主流发行版主要分为Windows WSL环境、云环境虚拟机（云主机）、容器环境
-- 苹果的macOS、Windows、鸿蒙笔记本电脑等
-
-目前的重点是x86_64和ARM64环境下的Linux主流发行版和苹果的macOS
+# 跨平台安装测试测试环境矩阵
 
 |操作系统|架构|发行版/版本|安装结果|功能测试|备注|
 |---|---|---|---|---|---|

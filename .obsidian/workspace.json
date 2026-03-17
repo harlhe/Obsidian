@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "82c09ca80411e2a5",
+        "id": "52edba4efa8cd1a7",
         "type": "tabs",
         "children": [
           {
-            "id": "f703bc320f6b1a64",
+            "id": "b8b3048ee14bcea0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DevStar AI E2E 调研与落地汇报.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "DevStar AI E2E 调研与落地汇报"
+              "title": "新标签页"
             }
           }
         ]
@@ -180,23 +176,28 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f703bc320f6b1a64",
+  "active": "b8b3048ee14bcea0",
   "lastOpenFiles": [
-    "AI集成测试方案.md",
-    "简历补充.md",
-    "会议纪要1.md",
-    "测试场景.md",
     "笔记提示词.md",
     "11.08.md",
-    "token.md",
-    "MacOS测试结果.md",
-    "docs自动化.md",
-    "DevStar AI E2E 调研与落地汇报.md",
+    "简历补充.md",
     "hot100.md",
+    "devstar-docs/token.md",
+    "devstar-docs/MacOS测试结果.md",
+    "devstar-docs/docs site自动化.md",
+    "devstar-docs/devstar MacOS测试.md",
+    "devstar-docs/DevStar AI E2E 调研与落地汇报.md",
+    "SWE-agent测评架构/测评.md",
+    "八股/Java集合.md",
+    "devstar-docs/3.11会议纪要.md",
+    "SWE-agent测评架构/test prompt.md",
+    "SWE-agent测评架构/架构.md",
+    "Users/gaozhiyang/dev-docs/devstar/tests/e2e/README.md",
+    "devstar-docs",
+    "devstar-docs/AI集成测试方案.md",
     "八股/操作系统.md",
     "月报/1月.md",
     "月报/论文.md",
-    "Users/gaozhiyang/dev-docs/devstar/tests/e2e/README.md",
     "Users/gaozhiyang/dev-docs/devstar/tests/e2e",
     "Users/gaozhiyang/dev-docs/devstar/tests",
     "Users/gaozhiyang/dev-docs/devstar",
@@ -220,13 +221,8 @@
     "月报/7月月报.md",
     "月报/9月月报.md",
     "月报/8月月报.md",
-    "端口转发.md",
-    "demo.md",
-    "DevContainer的ssh 登录方式变更需求.md",
-    "取消devcontainer的专用端口，使用ssh devstar.cn默认ssh端口 49.md",
-    "八股（*）",
+    "八股",
     "Agent应用开发/Agent-PDF/2_Agent应用开发.pdf",
-    "Agent应用开发/Agent-PDF",
-    "Agent应用开发/Agent-PDF/小智医疗/尚硅谷-Java+大模型应用-硅谷小智（医疗版）.pdf"
+    "Agent应用开发/Agent-PDF"
   ]
 }
