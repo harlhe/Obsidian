@@ -9,29 +9,26 @@ description: "全面的MySQL数据库面试题汇总，涵盖SQL基础、索引�
 tags:
   - "clippings"
 ---
-[![](https://cdn.xiaolincoding.com/mianshiya.png)](https://mianshiya.com/?shareCode=xeu1wi)
 
 ## SQL基础
 
 ### NOSQL和SQL的区别？
 
-SQL数据库，指关系型数据库 - 主要代表：SQL Server，Oracle，MySQL(开源)，PostgreSQL(开源)。
+SQL数据库：关系型数据库 - 主要代表：SQL Server，Oracle，MySQL(开源)，PostgreSQL(开源)。
 
-关系型数据库存储结构化数据。这些数据逻辑上以行列二维表的形式存在，每一列代表数据的一种属性，每一行代表一个数据实体。
+关系型数据库存储结构化数据：数据逻辑上以行列二维表的形式存在，每一列代表数据的一种属性，每一行代表一个数据实体。
 
 ![image-20240725232218438](https://cdn.xiaolincoding.com//picgo/image-20240725232218438.png)
 
 NoSQL指非关系型数据库 ，主要代表：MongoDB，Redis。NoSQL 数据库逻辑上提供了不同于二维表的存储方式，存储方式可以是JSON文档、哈希表或者其他方式。
 
-![image-20240725232206455](https://cdn.xiaolincoding.com//picgo/image-20240725232206455.png)
 
 选择 SQL vs NoSQL，考虑以下因素。
 
 > ACID vs BASE
 
-关系型数据库支持 ACID 即原子性，一致性，隔离性和持续性。相对而言，NoSQL 采用更宽松的模型 BASE ， 即基本可用，软状态和最终一致性。
-
-从实用的角度出发，我们需要考虑对于面对的应用场景，ACID 是否是必须的。比如银行应用就必须保证 ACID，否则一笔钱可能被使用两次；又比如社交软件不必保证 ACID，因为一条状态的更新对于所有用户读取先后时间有数秒不同并不影响使用。
+关系型数据库支持 ACID 即原子性，一致性，隔离性和持续性。
+NoSQL 采用更宽松的模型 BASE ， 即基本可用，软状态和最终一致性。
 
 对于需要保证 ACID 的应用，我们可以优先考虑 SQL。反之则可以优先考虑 NoSQL。
 

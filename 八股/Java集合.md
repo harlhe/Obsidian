@@ -1,13 +1,13 @@
 ---
-title: "Java集合面试题"
-source: "https://xiaolincoding.com/interview/collections.html#%E6%A6%82%E5%BF%B5"
+title: Java集合面试题
+source: https://xiaolincoding.com/interview/collections.html#%E6%A6%82%E5%BF%B5
 author:
   - "[[小林coding]]"
 published: undefined
 created: 2025-09-16
-description: "全面的Java集合框架面试题汇总，涵盖List、Set、Map等核心接口，ArrayList、LinkedList、HashMap、HashSet、TreeMap、ConcurrentHashMap等常用实现类的底层原理、性能特点、使用场景和源码分析。深入解析集合框架的数据结构和算法，适合Java开发者面试准备和基础巩固。"
+description: 全面的Java集合框架面试题汇总，涵盖List、Set、Map等核心接口，ArrayList、LinkedList、HashMap、HashSet、TreeMap、ConcurrentHashMap等常用实现类的底层原理、性能特点、使用场景和源码分析。深入解析集合框架的数据结构和算法，适合Java开发者面试准备和基础巩固。
 tags:
-  - "clippings"
+  - clippings
 ---
 
 ## 概念
@@ -917,15 +917,3 @@ return null;
 
 - **有序的 Set 是TreeSet和LinkedHashSet** 。TreeSet是基于红黑树实现，保证元素的自然顺序。LinkedHashSet是基于双重链表和哈希表的结合来实现元素的有序存储，保证元素添加的自然顺序
 - **记录插入顺序的集合通常指的是LinkedHashSet** ，它不仅保证元素的唯一性，还可以保持元素的插入顺序。当需要在Set集合中记录元素的插入顺序时，可以选择使用LinkedHashSet来实现。
-
----
-
-[![](https://cdn.xiaolincoding.com/mianshiya.png)](https://mianshiya.com/?shareCode=xeu1wi)
-
----
-
-最新的图解文章都在公众号首发，别忘记关注哦！！如果你想加入百人技术交流群，扫码下方二维码回复「加群」。
-
-![img](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost3@main/%E5%85%B6%E4%BB%96/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BB%8B%E7%BB%8D.png)
-
-登录后查看评论
