@@ -1,7 +1,5 @@
 export DEVSTAR_BASE_URL=http://127.0.0.1:8080
 export DEVSTAR_USERNAME='gzy'
-export DEVSTAR_PASSWORD='12345678'
+export DEVSTAR_PASSWORD='20021108'
 export DEVSTAR_OWNER='gzy'
 export DEVSTAR_TOKEN='c421cb396395995e9921c063a94d0d74bef127c6'
-export AGENT_BROWSER_SESSION='devstar-native-agent'
-export AGENT_BROWSER_SESSION_NAME='devstar-native-agent'
