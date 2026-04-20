@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776647029856-jutypod64",
+  "providerId": "claude",
+  "title": "Check request",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776647029857,
+  "updatedAt": 1776647072101,
+  "lastResponseAt": 1776647072101,
+  "sessionId": "f923f32d-0ff7-4b9e-844a-3d8bd5363329",
+  "providerState": {
+    "providerSessionId": "f923f32d-0ff7-4b9e-844a-3d8bd5363329"
+  },
+  "currentNote": "面试/未命名.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}

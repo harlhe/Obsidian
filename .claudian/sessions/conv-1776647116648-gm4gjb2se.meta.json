@@ -1,14 +1,14 @@
 {
-  "id": "conv-1776633614096-k1l8m5i6s",
+  "id": "conv-1776647116648-gm4gjb2se",
   "providerId": "claude",
-  "title": "Create numbered list",
+  "title": "Restructure notes by topic",
   "titleGenerationStatus": "success",
-  "createdAt": 1776633614097,
-  "updatedAt": 1776647052449,
-  "lastResponseAt": 1776645799806,
-  "sessionId": "dc2ad87a-8ad4-43df-8f68-c5f28235a4a7",
+  "createdAt": 1776647116648,
+  "updatedAt": 1776647294184,
+  "lastResponseAt": 1776647294184,
+  "sessionId": "b3cda23d-1e52-4561-87e9-3f877defc33d",
   "providerState": {
-    "providerSessionId": "dc2ad87a-8ad4-43df-8f68-c5f28235a4a7"
+    "providerSessionId": "b3cda23d-1e52-4561-87e9-3f877defc33d"
   },
   "usage": {
     "model": "haiku",
