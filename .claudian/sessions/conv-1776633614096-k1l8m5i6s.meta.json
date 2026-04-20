@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776633614096-k1l8m5i6s",
+  "providerId": "claude",
+  "title": "Create numbered list",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776633614097,
+  "updatedAt": 1776636932039,
+  "lastResponseAt": 1776636932039,
+  "sessionId": "dc2ad87a-8ad4-43df-8f68-c5f28235a4a7",
+  "providerState": {
+    "providerSessionId": "dc2ad87a-8ad4-43df-8f68-c5f28235a4a7"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0,
+    "contextWindowIsAuthoritative": true
+  }
+}

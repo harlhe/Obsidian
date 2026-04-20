@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "80bb0ca51ae81d71",
+        "id": "4242c6764d5d861d",
         "type": "tabs",
         "children": [
           {
-            "id": "bb0ad9325624b8b3",
+            "id": "d6a00a5469fe430d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ai自动化测试/未命名.md",
+                "file": "面试/未命名.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "未命名"
             }
-          },
-          {
-            "id": "b91697d19ac86587",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "codex激活码.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "codex激活码"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -55,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTimeReverse",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -175,13 +160,23 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "87b25e6eb8e9a182",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
           }
         ],
         "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 321.5
+    "width": 428.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,47 +187,49 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "claudian:Open Claudian": false
     }
   },
-  "active": "b91697d19ac86587",
+  "active": "472cb6bb49cbdb1a",
   "lastOpenFiles": [
-    "AI Review PI.md",
-    "ai自动化测试/OpenCode Web 模式总结.md",
-    "ai自动化测试/DevStar-AI-QA-整包回归-20260324.md",
-    "11.08.md",
-    "Users/gaozhiyang/dev-docs/openTest/testAgent/playwright-test-report-platform-access-ready.md",
-    "笔记提示词.md",
-    "codex激活码.md",
-    "简历补充.md",
-    "未命名.md",
-    "ai自动化测试/未命名.md",
-    "ai自动化测试/前端 AI 自动化测试：brower-use 调研.md",
-    "ai自动化测试/产品预言报告.md",
-    "ai自动化测试/技术方案报告.md",
-    "ai自动化测试/3.25会议纪要.md",
-    "ai自动化测试/3.25.md",
-    "ai自动化测试/DevStar 测试场景.md",
-    "Clippings/论文方向-feat Add unified SSH entry point for IDE integration via Docker over SSH.md",
-    "ai自动化测试/DevStar-自动化测试-20260324.md",
-    "ai自动化测试/自动化测试方案对比报告.md",
-    "ai自动化测试/小龙虾总结.md",
-    "Users/gaozhiyang/dev-docs/openTest/testAgent/README.md",
-    "Users/gaozhiyang/dev-docs/openTest/testAgent",
-    "Users/gaozhiyang/dev-docs/openTest",
-    "ai自动化测试/browser-use_OpenClaw_现有方案对比.md",
-    "ai自动化测试/DevStar 23场景执行总结与问题定位.md",
+    "120750f4a2dd6832ff124b0efd7576a4.png",
+    "面试/淘天 AI应用二面.md",
+    "面试/未命名.md",
+    "面试/1.md",
     "ai%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/DevStar%2023%E5%9C%BA%E6%99%AF%E6%89%A7%E8%A1%8C%E6%80%BB%E7%BB%93%E4%B8%8E%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D.md",
     "ai%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95",
+    "Agent应用开发/\"Agent345272224347224250345274200345217221\"",
+    "codex激活码.md",
+    "面试",
+    "AI Review PI.md",
+    "11.08.md",
+    "Claude Code设计指南--洺熙.pdf",
     "devstar-docs/token.md",
-    "ai自动化测试/OpenCode Web 模式：当 AI 编程从终端走向浏览器.md",
-    "ai自动化测试",
-    "Clippings",
-    "Users/gaozhiyang/dev-docs/devstar/qa/devstar-agent-runtime/artifacts/vscode-copilot-mcp-tool-call-2026-03-18T001611363Z",
-    "Users/gaozhiyang/dev-docs/devstar/qa/devstar-agent-runtime/artifacts/scenario-sweep-20260316T170215",
-    "Users/gaozhiyang/dev-docs/devstar/qa/devstar-agent-runtime/artifacts",
-    "Users/gaozhiyang/dev-docs/devstar/qa/devstar-agent-runtime",
-    "Users/gaozhiyang/dev-docs/devstar/qa",
+    "devstar-docs/AI集成测试方案.md",
+    "八股/面经.md",
+    "ai自动化测试/未命名.md",
+    "devstar-docs/AgentPlan.md",
+    "devstar-docs/DevStar测试.md",
+    "devstar-docs/MacOS测试结果.md",
+    "devstar-docs/devstar MacOS测试.md",
+    "devstar-docs/docs site自动化.md",
+    "knowledge-categories/01.AI技术/Agent/抽离登录为原子 Skill.md",
+    "月报/论文.md",
+    "月报/9月月报.md",
+    "月报/8月月报.md",
+    "月报/7月月报.md",
+    "月报/2月.md",
+    "月报/1月.md",
+    "月报",
+    "八股/速成.md",
+    "八股/读写分离和分库分表详解.md",
+    "八股",
+    "mate-agent/cline",
+    "mate-agent",
+    "devstar-docs",
+    "claude code逆向",
+    "assets images/120750f4a2dd6832ff124b0efd7576a4.png",
     "Pasted image 20251108170015.png",
     "Pasted image 20260118170458.png",
     "Pasted image 20260118170603.png",
@@ -241,7 +238,6 @@
     "Pasted image 20260118171039.png",
     "Pasted image 20260118171516.png",
     "Pasted image 20260118191801.png",
-    "Pasted image 20260118191846.png",
-    "Pasted image 20260118192049.png"
+    "Pasted image 20260118191846.png"
   ]
 }

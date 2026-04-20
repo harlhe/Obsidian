@@ -1,0 +1,76 @@
+{
+  "userName": "",
+  "permissionMode": "yolo",
+  "model": "haiku",
+  "thinkingBudget": "off",
+  "effortLevel": "high",
+  "serviceTier": "default",
+  "enableAutoTitleGeneration": true,
+  "titleGenerationModel": "",
+  "excludedTags": [],
+  "mediaFolder": "",
+  "systemPrompt": "默认用中文回答我",
+  "persistentExternalContextPaths": [],
+  "sharedEnvironmentVariables": "PATH=/Users/gaozhiyang/.local/share/fnm/aliases/default/bin:$PATH\n",
+  "envSnippets": [
+    {
+      "id": "snippet-1776634591434",
+      "name": "zhipu",
+      "description": "",
+      "envVars": "\nANTHROPIC_AUTH_TOKEN=dc49c73eb0e84ed5ade80fea118ed377.DN2eDx2cC0Jy8ADm\nANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic",
+      "scope": "provider:claude"
+    }
+  ],
+  "customContextLimits": {},
+  "keyboardNavigation": {
+    "scrollUpKey": "w",
+    "scrollDownKey": "s",
+    "focusInputKey": "i"
+  },
+  "locale": "zh-CN",
+  "providerConfigs": {
+    "claude": {
+      "safeMode": "acceptEdits",
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "loadUserSettings": true,
+      "enableChrome": false,
+      "enableBangBash": false,
+      "enableOpus1M": false,
+      "enableSonnet1M": false,
+      "lastModel": "haiku",
+      "environmentVariables": "ANTHROPIC_AUTH_TOKEN=dc49c73eb0e84ed5ade80fea118ed377.DN2eDx2cC0Jy8ADm\nANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic",
+      "environmentHash": "ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic"
+    },
+    "codex": {
+      "enabled": false,
+      "safeMode": "workspace-write",
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "reasoningSummary": "detailed",
+      "environmentVariables": "",
+      "environmentHash": "",
+      "installationMethodsByHost": {
+        "MacBook-Air.local": "native-windows"
+      },
+      "wslDistroOverridesByHost": {}
+    }
+  },
+  "settingsProvider": "claude",
+  "savedProviderModel": {
+    "claude": "haiku"
+  },
+  "savedProviderEffort": {
+    "claude": "high"
+  },
+  "savedProviderServiceTier": {},
+  "savedProviderThinkingBudget": {
+    "claude": "off"
+  },
+  "lastCustomModel": "glm",
+  "maxTabs": 3,
+  "tabBarPosition": "input",
+  "enableAutoScroll": true,
+  "openInMainTab": false,
+  "hiddenProviderCommands": {}
+}
