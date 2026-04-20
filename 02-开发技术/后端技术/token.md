@@ -1,5 +1,47 @@
-export DEVSTAR_BASE_URL=http://127.0.0.1:8080
-export DEVSTAR_USERNAME='gzy'
-export DEVSTAR_PASSWORD='20021108'
-export DEVSTAR_OWNER='gzy'
-export DEVSTAR_TOKEN='c421cb396395995e9921c063a94d0d74bef127c6'
+# Token 与本地环境鉴权配置
+
+## 概念
+Token 配置用于本地/测试环境访问受保护接口。核心目标是“安全可用 + 可轮换 + 可审计”。
+
+## 机制/流程
+1. 在安全渠道申请 token。
+2. 使用环境变量注入运行时，不写死在代码仓库。
+3. 设置过期策略并定期轮换。
+4. 在日志中脱敏输出。
+
+## 学习要点
+- `.env` 与 CI Secret 分离管理。
+- 本地调试和生产凭证严格隔离。
+- 失败重试要区分“权限问题”和“网络问题”。
+
+## 高频面试问答
+- Q：为什么不能把 token 写进仓库？
+  A：泄漏风险高，且无法细粒度吊销。
+- Q：如何做最小权限？
+  A：按场景拆分 token scope，仅授予必要资源访问。
+
+## 易错点
+- 在命令历史或截图中泄露凭证。
+- 共用长期有效 token。
+
+## 参考资料
+- [OWASP Secrets Management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)
+- [GitHub Secret Scanning](https://docs.github.com/en/code-security/secret-scanning)
+- [12-Factor Config](https://12factor.net/config)
+
+## 实战演练清单
+- 用一个真实任务做 30 分钟限时复盘：先写目标、再写步骤、最后写结果与改进点。
+- 把当前主题抽成 3 个“可复述模板”：定义模板、排障模板、面试回答模板。
+- 记录一次失败样例：失败现象、根因、修复策略、可复用经验。
+
+## 复习节奏建议
+- D1：通读全文，口述核心概念（3-5 分钟）。
+- D3：只看“高频问答”和“易错点”，做一次自测。
+- D7：结合实际项目或面试题，写一页应用案例。
+- D14：回看旧结论，删除过时信息并补充新实践。
+
+## 自测题（可直接口述）
+1. 这个主题最关键的工程权衡是什么？
+2. 如果要落地到你的项目，第一步应该做什么？
+3. 如何定义这个主题“做成了”的验收标准？
+

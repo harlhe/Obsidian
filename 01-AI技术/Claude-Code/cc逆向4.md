@@ -1,2 +1,47 @@
+# Claude Code 逆向笔记 4：执行闭环与守护机制
 
-[https://github.com/Yuyz0112/claude-code-reverse/blob/main/README.zh_CN.md](https://github.com/Yuyz0112/claude-code-reverse/blob/main/README.zh_CN.md)
+## 概念
+本篇关注“任务执行闭环”：如何从计划、执行、校验到交付形成稳定流水线。
+
+## 机制/流程
+- 计划阶段：定义目标、边界、验收标准。
+- 执行阶段：小步改动 + 过程可见。
+- 校验阶段：测试/检查 + 失败回滚。
+- 交付阶段：变更摘要 + 风险说明。
+
+## 学习要点
+- 工具调用要有前置条件检查。
+- 长任务要有中断恢复点。
+- 失败不能只报错，要给下一步建议。
+
+## 高频面试问答
+- Q：为什么要小步提交？
+  A：便于定位问题、降低回滚成本、提升协作可读性。
+- Q：如何避免上下文漂移？
+  A：阶段性总结 + 关键约束重申。
+
+## 易错点
+- 只关注“能跑通”，忽略“可维护”。
+- 缺少对外可读的执行报告。
+
+## 参考资料
+- [GitHub Actions Best Practices](https://docs.github.com/en/actions/learn-github-actions)
+- [TDD Overview](https://martinfowler.com/bliki/TestDrivenDevelopment.html)
+- [SRE Error Budgets](https://sre.google/sre-book/embracing-risk/)
+
+## 实战演练清单
+- 用一个真实任务做 30 分钟限时复盘：先写目标、再写步骤、最后写结果与改进点。
+- 把当前主题抽成 3 个“可复述模板”：定义模板、排障模板、面试回答模板。
+- 记录一次失败样例：失败现象、根因、修复策略、可复用经验。
+
+## 复习节奏建议
+- D1：通读全文，口述核心概念（3-5 分钟）。
+- D3：只看“高频问答”和“易错点”，做一次自测。
+- D7：结合实际项目或面试题，写一页应用案例。
+- D14：回看旧结论，删除过时信息并补充新实践。
+
+## 自测题（可直接口述）
+1. 这个主题最关键的工程权衡是什么？
+2. 如果要落地到你的项目，第一步应该做什么？
+3. 如何定义这个主题“做成了”的验收标准？
+

@@ -1,2 +1,46 @@
+# Claude Code 逆向笔记 3：数据结构与上下文组织
 
-[https://github.com/shareAI-lab/analysis_claude_code](https://github.com/shareAI-lab/analysis_claude_code) [](https://github.com/shareAI-lab/analysis_claude_code)->
+## 概念
+核心问题是“如何组织上下文”：既让模型拿到足够信息，又避免窗口爆炸。
+
+## 机制/流程
+- 输入分层：系统约束、任务目标、仓库事实、最近变更。
+- 历史裁剪：保留关键决策与失败原因，压缩重复细节。
+- 输出结构化：计划、执行、验证、风险分块输出。
+
+## 学习要点
+- 结构化上下文优于大段原文堆叠。
+- 历史摘要必须可追溯到证据。
+- 关键信息要可机器解析（JSON/table/frontmatter）。
+
+## 高频面试问答
+- Q：上下文管理最关键指标是什么？
+  A：任务成功率、平均 token 成本、错误恢复速度。
+- Q：什么时候需要外部记忆？
+  A：跨任务持续协作或需要长期状态时。
+
+## 易错点
+- 把“所有内容都塞进上下文”。
+- 摘要丢失边界条件导致错误决策。
+
+## 参考资料
+- [Context Engineering](https://www.anthropic.com/engineering)
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+- [OpenAI Prompting Guide](https://platform.openai.com/docs/guides/text)
+
+## 实战演练清单
+- 用一个真实任务做 30 分钟限时复盘：先写目标、再写步骤、最后写结果与改进点。
+- 把当前主题抽成 3 个“可复述模板”：定义模板、排障模板、面试回答模板。
+- 记录一次失败样例：失败现象、根因、修复策略、可复用经验。
+
+## 复习节奏建议
+- D1：通读全文，口述核心概念（3-5 分钟）。
+- D3：只看“高频问答”和“易错点”，做一次自测。
+- D7：结合实际项目或面试题，写一页应用案例。
+- D14：回看旧结论，删除过时信息并补充新实践。
+
+## 自测题（可直接口述）
+1. 这个主题最关键的工程权衡是什么？
+2. 如果要落地到你的项目，第一步应该做什么？
+3. 如何定义这个主题“做成了”的验收标准？
+

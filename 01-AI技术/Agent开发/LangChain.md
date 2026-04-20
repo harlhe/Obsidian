@@ -1,2 +1,47 @@
-https://docs.langchain4j.info/
-https://deepwiki.com/langchain-ai/langchain
+# LangChain 学习笔记
+
+## 概念
+LangChain 是构建 LLM 应用的工程框架，提供模型封装、提示模板、检索增强、工具调用、链式编排等能力。
+
+## 机制/流程
+- PromptTemplate 组织输入。
+- Model 负责推理。
+- Tools/Retrievers 提供外部能力。
+- Chain/Agent 组合执行并输出。
+
+## 学习要点
+- 用 LangChain 做“可组合模块”，避免业务逻辑耦合在 prompt。
+- 结合 LangSmith 做可观测与调试。
+- 对复杂任务建议引入状态机或 LangGraph。
+
+## 高频面试问答
+- Q：什么时候不适合 LangChain？
+  A：超轻量场景，直接 SDK 调用更简单。
+- Q：RAG 在链路中位置？
+  A：通常在推理前检索上下文，再交给模型生成。
+
+## 易错点
+- 盲目堆链条，导致延迟和成本失控。
+- 不做缓存与重试策略。
+
+## 参考资料
+- [LangChain Docs](https://docs.langchain.com/)
+- [LangGraph Docs](https://langchain-ai.github.io/langgraph/)
+- [LangSmith Docs](https://docs.smith.langchain.com/)
+
+## 实战演练清单
+- 用一个真实任务做 30 分钟限时复盘：先写目标、再写步骤、最后写结果与改进点。
+- 把当前主题抽成 3 个“可复述模板”：定义模板、排障模板、面试回答模板。
+- 记录一次失败样例：失败现象、根因、修复策略、可复用经验。
+
+## 复习节奏建议
+- D1：通读全文，口述核心概念（3-5 分钟）。
+- D3：只看“高频问答”和“易错点”，做一次自测。
+- D7：结合实际项目或面试题，写一页应用案例。
+- D14：回看旧结论，删除过时信息并补充新实践。
+
+## 自测题（可直接口述）
+1. 这个主题最关键的工程权衡是什么？
+2. 如果要落地到你的项目，第一步应该做什么？
+3. 如何定义这个主题“做成了”的验收标准？
+
