@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "4242c6764d5d861d",
+        "id": "8c1a669208d7916f",
         "type": "tabs",
         "children": [
           {
-            "id": "d6a00a5469fe430d",
+            "id": "711438e1f914e04b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AGENTS.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "AGENTS"
+              "title": "新标签页"
             }
           }
         ]
@@ -162,7 +158,7 @@
             }
           },
           {
-            "id": "87b25e6eb8e9a182",
+            "id": "e377095f62713e79",
             "type": "leaf",
             "state": {
               "type": "claudian-view",
@@ -191,53 +187,52 @@
       "claudian:Open Claudian": false
     }
   },
-  "active": "d6a00a5469fe430d",
+  "active": "bcdcc75ddfc05c39",
   "lastOpenFiles": [
+    "gsd使用说明.md",
+    "AGENTS.md",
+    "LLM-Wiki/wiki/the schema",
+    "04-个人笔记/Claude Code设计指南--洺熙.pdf",
+    "03-面试准备/面试经验/未命名.md",
+    "03-面试准备/面试经验/面经总览.md",
+    "03-面试准备/面试经验/120750f4a2dd6832ff124b0efd7576a4.png",
+    "未命名.md",
+    "LLM-Wiki/wiki/log",
+    "LLM-Wiki/wiki/index",
+    "LLM-Wiki/wiki/总览",
+    "LLM-Wiki/wiki/实体",
+    "LLM-Wiki/wiki/来源",
+    "LLM-Wiki/wiki/概念",
+    "LLM-Wiki/wiki/对比",
+    "LLM-Wiki/wiki",
+    "Clippings/Hot100 1 · 语雀.md",
+    "AGENT_REGRESSION 目录结构与 RUN-REGRESSION.SH 模块分析.md",
+    "03-面试准备/03-面试准备总览.md",
+    "03-面试准备/面试经验/淘天 AI应用二面.md",
     "未命名 1.md",
     "00-项目管理/会议记录/AI自动化测试/3.25讨论记录.md",
     "00-项目管理/00-项目管理总览.md",
     "06-专项研究/06-专项研究总览.md",
     "00-项目管理/会议记录/codex激活码.md",
     "03-面试准备/系统设计/淘天 AI应用二面.md",
-    "AGENTS.md",
-    "03-面试准备/面试经验/面经总览.md",
     "02-开发技术/后端技术/Codex环境接入与鉴权说明.md",
     "00-项目管理/需求文档/知识重构融合记录.md",
     "05-参考资料/05-参考资料总览.md",
     "04-个人笔记/04-个人笔记总览.md",
-    "03-面试准备/03-面试准备总览.md",
     "02-开发技术/02-开发技术总览.md",
     "01-AI技术/01-AI技术总览.md",
     "01-AI技术/Agent开发/SWE-Agent-Prompt与评测流程.md",
     "00-项目管理/会议记录/AI自动化测试/3.25会议纪要.md",
     "00-项目管理/会议记录/AI自动化测试/3.18会议纪要.md",
     "00-项目管理/会议记录/AI自动化测试/3.11会议纪要.md",
-    "00-项目管理/会议记录/AI自动化测试",
-    "00-项目管理/会议记录/11.08.md",
-    "06-专项研究/技术探索/测评.md",
-    "06-专项研究/技术探索/架构.md",
-    "06-专项研究/技术探索/test prompt.md",
-    "02-开发技术/后端技术/DevStar测试.md",
-    "02-开发技术/后端技术/AgentPlan.md",
-    "02-开发技术/后端技术/AI集成测试方案.md",
-    "120750f4a2dd6832ff124b0efd7576a4.png",
-    "Claude Code设计指南--洺熙.pdf",
     "05-参考资料/文档剪藏/Pasted image 20250827093925.png",
     "05-参考资料/文档剪藏/Pasted image 20250908232849.png",
-    "04-个人笔记/随笔记录/git",
     "05-参考资料/文档剪藏/下载.svg",
     "05-参考资料/文档剪藏/Pasted image 20250908232812.png",
     "05-参考资料/文档剪藏/Pasted image 20250908232205.png",
     "05-参考资料/文档剪藏/Pasted image 20250829151546.png",
     "05-参考资料/文档剪藏/Pasted image 20250829095952.png",
     "05-参考资料/文档剪藏/Pasted image 20250828170229.png",
-    "05-参考资料/文档剪藏/Pasted image 20250828161409.png",
-    "01-AI技术/Mate-Agent/cline",
-    "01-AI技术/Agent开发/Agent-PDF/小智医疗/尚硅谷-Java+大模型应用-硅谷小智（医疗版）.pdf",
-    "01-AI技术/Agent开发/Agent-PDF/RAG 核心机制、实现工具链与前沿架构的综合分析.pdf",
-    "01-AI技术/Agent开发/Agent-PDF/小智医疗",
-    "01-AI技术/Agent开发/Agent-PDF/2_Agent应用开发.pdf",
-    "01-AI技术/Agent开发/Agent-PDF",
-    "01-AI技术/Agent开发/\"Agent345272224347224250345274200345217221\""
+    "05-参考资料/文档剪藏/Pasted image 20250828161409.png"
   ]
 }
