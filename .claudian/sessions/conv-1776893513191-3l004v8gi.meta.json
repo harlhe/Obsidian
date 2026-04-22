@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776893513191-3l004v8gi",
+  "providerId": "claude",
+  "title": "Update 00-08 Overview",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776893513193,
+  "updatedAt": 1776893620951,
+  "lastResponseAt": 1776893620951,
+  "sessionId": "1f4ec714-c513-4da9-a5a7-616b47de52f2",
+  "providerState": {
+    "providerSessionId": "1f4ec714-c513-4da9-a5a7-616b47de52f2"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0,
+    "contextWindowIsAuthoritative": true
+  }
+}
