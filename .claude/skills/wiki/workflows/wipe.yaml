@@ -1,0 +1,262 @@
+# 重置/删除知识库工作流
+description: |
+  提供多种重置和删除选项：全部删除、按关键词删除、删除垃圾箱、恢复垃圾箱、清空垃圾箱
+
+steps:
+  - name: 解析wipe子命令
+    bash: |
+      echo "🗑️ 解析wipe操作..."
+
+      case "{{args}}" in
+        "all")
+          operation="delete_all"
+          echo "🔄 删除全部内容"
+          ;;
+        "trash")
+          operation="empty_trash"
+          echo "🗑️ 清空垃圾箱"
+          ;;
+        "restore")
+          operation="restore_trash"
+          echo "↩️ 恢复垃圾箱内容"
+          ;;
+        "")
+          operation="show_menu"
+          echo "📋 显示菜单选项"
+          ;;
+        *)
+          operation="delete_by_keyword"
+          keyword="{{args}}"
+          echo "🔍 按关键词删除: $keyword"
+          ;;
+      esac
+
+  - name: 创建备份（重要操作）
+    condition: [operation="delete_all", operation="delete_by_keyword"]
+    bash: |
+      echo "💾 创建备份..."
+
+      backup_dir="{{kb.root}}/.wiki_backup/$(date +%Y%m%d_%H%M%S)"
+      mkdir -p "$backup_dir"
+
+      if [ "{{args}}" = "all" ]; then
+        # 备份整个wiki目录
+        cp -r "{{kb.wiki}}" "$backup_dir/"
+        echo "✅ 完整备份已保存到: $backup_dir"
+      else
+        # 备份匹配的文件
+        find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+          if echo "$(basename "$file")" | grep -i "{{args}}" >/dev/null; then
+            mkdir -p "$backup_dir/$(dirname "$file")"
+            cp "$file" "$backup_dir/$(dirname "$file")/"
+          fi
+        done
+        echo "✅ 关键词备份已保存到: $backup_dir"
+      fi
+
+  - name: 执行删除操作
+    bash: |
+      case "$operation" in
+        "delete_all")
+          echo "⚠️ 删除全部知识库内容..."
+          rm -rf "{{kb.wiki}}"/*
+          mkdir -p "{{kb.wiki}}"
+          echo "✅ 全部内容已删除"
+          ;;
+        "delete_by_keyword")
+          echo "🔍 删除包含关键词的文件..."
+          deleted_count=0
+          find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+            if echo "$(basename "$file")" | grep -i "{{args}}" >/dev/null; then
+              echo "🗑️ 删除: $(basename "$file")"
+              mv "$file" "{{kb.wiki}}/.trash/"
+              ((deleted_count++))
+            fi
+          done
+          echo "✅ 已删除 $deleted_count 个文件"
+          ;;
+        "empty_trash")
+          echo "🗑️ 清空垃圾箱..."
+          rm -rf "{{kb.wiki}}/.trash"/*
+          echo "✅ 垃圾箱已清空"
+          ;;
+        "restore_trash")
+          echo "↩️ 恢复垃圾箱内容..."
+          if [ -d "{{kb.wiki}}/.trash" ]; then
+            cd "{{kb.wiki}}/.trash"
+            for item in *; do
+              if [ -f "$item" ]; then
+                echo "🔄 恢复: $item"
+                mv "$item" "{{kb.wiki}}/"
+              elif [ -d "$item" ]; then
+                echo "🔄 恢复目录: $item"
+                cp -r "$item" "{{kb.wiki}}/"
+              fi
+            done
+          fi
+          echo "✅ 垃圾箱内容已恢复"
+          ;;
+        "show_menu")
+          show_wipe_menu
+          ;;
+      esac
+
+  - name: 确认操作结果
+    bash: |
+      echo "📊 操作结果统计："
+
+      case "$operation" in
+        "delete_all")
+          remaining_files=$(find "{{kb.wiki}}" -name "*.md" -type f | wc -l)
+          echo "📄 剩余文件数: $remaining_files"
+          ;;
+        "delete_by_keyword")
+          remaining_files=$(find "{{kb.wiki}}" -name "*.md" -type f | wc -l)
+          echo "📄 剩余文件数: $remaining_files"
+          ;;
+        "empty_trash")
+          trash_count=$(find "{{kb.wiki}}/.trash" -name "*.md" -type f | wc -l)
+          echo "🗑️ 垃圾箱清空，之前有 $trash_count 个文件"
+          ;;
+        "restore_trash")
+          restored_count=$(find "{{kb.wiki}}/.trash" -name "*.md" -type f 2>/dev/null | wc -l)
+          echo "🔄 恢复了 $restored_count 个文件"
+          ;;
+      esac
+
+  - name: 更新索引页面
+    condition: [operation="delete_all", operation="delete_by_keyword"]
+    write_file: |
+      # 更新知识库索引
+      def update_index_after_wipe():
+          index_path = "{{kb.wiki}}/知识库索引.md"
+
+          # 重置索引内容
+          reset_content = """# 知识库索引
+
+## 📚 主要分类
+- [[AI技术]]
+- [[开发技术]]
+- [[面试准备]]
+- [[个人笔记]]
+- [[参考资料]]
+
+## 🚀 快速导航
+- [[最近更新]]
+- [[未分类]]
+
+## 💡 使用提示
+- 收集新资料时，先在 `05-参考资料/` 中整理
+- 整理完成后，链接到相应的分类中
+- 定期检查和维护链接的有效性
+
+---
+
+*注意：此页面在知识库重置时自动生成*
+"""
+
+          with open(index_path, 'w', encoding='utf-8') as f:
+              f.write(reset_content)
+
+          print("✅ 知识库索引已重置")
+
+  - name: 清理备份目录
+    bash: |
+      # 清理超过30天的备份
+      find "{{kb.root}}/.wiki_backup" -type d -mtime +30 -exec echo "🗑️ 清理旧备份: {}" \; -exec rm -rf {} \; 2>/dev/null
+
+      # 显示当前备份情况
+      backup_count=$(find "{{kb.root}}/.wiki_backup" -type d | wc -l)
+      echo "💾 当前备份目录数: $backup_count"
+
+  - name: 生成操作报告
+    write_file: |
+      # 生成wipe操作报告
+      def generate_wipe_report():
+          operation = "{{args}}"
+          timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+          report = f"""# 知识库操作报告
+
+## 📋 操作详情
+- **操作时间**: {timestamp}
+- **操作类型**: Wipe
+- **操作参数**: {operation}
+- **知识库**: {{kb.name}}
+
+## 📊 操作结果
+{get_operation_result()}
+
+## 🔗 相关链接
+- [[健康检查报告]]
+- [[知识库索引]]
+
+## ⚠️ 重要提醒
+- 请确认备份是否正确保存
+- 如需恢复，请查看备份目录
+- 建议定期备份重要内容
+
+---
+
+*此报告由wiki技能自动生成*
+"""
+
+          report_path = "{{kb.wiki}}/操作报告_$(date +%Y%m%d_%H%M%S).md"
+          os.makedirs(os.path.dirname(report_path), exist_ok=True)
+
+          with open(report_path, 'w', encoding='utf-8') as f:
+              f.write(report_path)
+
+          return report_path
+
+  - name: 显示使用帮助
+    condition: [operation="show_menu"]
+    write_file: |
+      # 显示wipe菜单
+      def show_wipe_menu():
+          print("""
+      🗑️ Wiki Wipe - 知识库重置工具
+
+      可用选项：
+        all          - 删除全部内容（会创建备份）
+        [关键词]      - 删除包含关键词的文件（会移到垃圾箱）
+        trash        - 清空垃圾箱
+        restore      - 从垃圾箱恢复文件
+        empty-trash  - 清空垃圾箱（与trash相同）
+
+      使用示例：
+        /wiki wipe all          # 删除全部内容
+        /wiki wipe 面试         # 删除包含"面试"的文件
+        /wiki wipe trash        # 清空垃圾箱
+        /wiki wipe restore      # 恢复垃圾箱内容
+
+      注意：重要操作会自动创建备份
+      """)
+
+output: |
+  🗑️ Wiki Wipe 操作完成！
+
+  📋 操作详情：
+  - 操作时间: $(date '+%Y-%m-%d %H:%M:%S')
+  - 操作类型: Wipe
+  - 操作参数: "{{args}}"
+  - 知识库: {{kb.name}}
+
+  📊 操作结果：
+  $(get_operation_result())
+
+  💾 备份信息：
+  - 备份位置: {{kb.root}}/.wiki_backup/
+  - 备份状态: 已创建
+
+  🔗 相关报告：
+  - 操作报告已保存到知识库
+  - [[健康检查报告]]
+
+  ⚠️ 重要提醒：
+  1. 请确认备份是否正确保存
+  2. 如需恢复，请查看备份目录
+  3. 建议定期备份重要内容
+
+  📖 使用帮助：
+  再次运行 `/wiki wipe` 查看可用选项

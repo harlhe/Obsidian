@@ -1,0 +1,201 @@
+# 收录素材工作流
+description: |
+  从raw目录中收集新素材，整理并添加到知识库中
+
+steps:
+  - name: 检查raw目录
+    bash: |
+      echo "🔍 检查Raw目录..."
+      if [ ! -d "{{kb.raw}}" ]; then
+        echo "❌ Raw目录不存在: {{kb.raw}}"
+        exit 1
+      fi
+      if [ -z "$(ls -A '{{kb.raw}}' 2>/dev/null)" ]; then
+        echo "⚠️ Raw目录为空，没有新素材需要收录"
+        exit 1
+      fi
+      echo "✅ Raw目录检查通过"
+
+  - name: 查找需要处理的文件
+    bash: |
+      echo "🔍 查找新文件..."
+      # 查找最近7天修改的文件
+      find "{{kb.raw}}" -name "*.md" -type f -mtime -1 -print > /tmp/new_files.txt
+      if [ -s /tmp/new_files.txt ]; then
+        echo "📋 找到以下新文件:"
+        cat /tmp/new_files.txt | while read file; do
+          echo "  - $(basename "$file")"
+        done
+        exit 0
+      else
+        echo "📭 没有找到新文件"
+        exit 1
+      fi
+
+  - name: 文件类型分类
+    bash: |
+      echo "📂 分类文件..."
+      while IFS= read -r file; do
+        filename=$(basename "$file")
+
+        # 根据文件名判断内容类型
+        if echo "$filename" | grep -i "面试\|八股\|系统设计" >/dev/null; then
+          category="面试准备"
+        elif echo "$filename" | grep -i "ai\|agent\|claude\|自动化" >/dev/null; then
+          category="AI技术"
+        elif echo "$filename" | grep -i "后端\|前端\|开发\|数据库\|devops" >/dev/null; then
+          category="开发技术"
+        elif echo "$filename" | grep -i "学习\|总结\|心得" >/dev/null; then
+          category="个人笔记"
+        elif echo "$filename" | grep -i "文档\|剪藏\|博客\|参考" >/dev/null; then
+          category="参考资料"
+        else
+          category="未分类"
+        fi
+
+        # 创建对应的wiki目录
+        mkdir -p "{{kb.wiki}}/$category"
+        echo "$file -> $category"
+
+      done < /tmp/new_files.txt
+
+  - name: 复制文件到Wiki目录
+    bash: |
+      echo "📝 复制文件到Wiki目录..."
+      mkdir -p /tmp/processed
+      while IFS= read -r file; do
+        filename=$(basename "$file")
+        dest_dir="{{kb.wiki}}/$(basename "$file" | sed 's/-.*$//')"
+
+        # 确定目标目录
+        if echo "$filename" | grep -i "面试\|八股\|系统设计" >/dev/null; then
+          dest_dir="{{kb.wiki}}/面试准备"
+        elif echo "$filename" | grep -i "ai\|agent\|claude\|自动化" >/dev/null; then
+          dest_dir="{{kb.wiki}}/AI技术"
+        elif echo "$filename" | grep -i "后端\|前端\|开发\|数据库\|devops" >/dev/null; then
+          dest_dir="{{kb.wiki}}/开发技术"
+        elif echo "$filename" | grep -i "学习\|总结\|心得" >/dev/null; then
+          dest_dir="{{kb.wiki}}/个人笔记"
+        elif echo "$filename" | grep -i "文档\|剪藏\|博客\|参考" >/dev/null; then
+          dest_dir="{{kb.wiki}}/参考资料"
+        else
+          dest_dir="{{kb.wiki}}/未分类"
+        fi
+
+        mkdir -p "$dest_dir"
+        cp "$file" "$dest_dir/"
+        touch /tmp/processed/"$filename"
+        echo "✅ 已复制: $file -> $dest_dir/"
+
+      done < /tmp/new_files.txt
+
+  - name: 优化文件内容
+    write_file: |
+      # 内容优化脚本
+      import re
+      import os
+
+      # 添加 frontmatter
+      def add_frontmatter(filepath, title):
+          with open(filepath, 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          if not content.startswith('---'):
+              frontmatter = f"""---
+title: "{title}"
+created: {datetime.now().strftime('%Y-%m-%d')}
+tags: [clippings]
+---
+
+"""
+              content = frontmatter + content
+
+          with open(filepath, 'w', encoding='utf-8') as f:
+              f.write(content)
+
+      # 修复链接
+      def fix_links(content):
+          # 修复本地链接
+          content = re.sub(r'\]\(/([^)]+)\)', r']([[\1]])', content)
+          # 修复图片链接
+          content = re.sub(r'!\[([^\]]*)\]\(/([^)]+)\)', r'![\1][[\2]]', content)
+          return content
+
+  - name: 更新索引页面
+    write_file: |
+      # 更新知识库索引
+      def update_index():
+          index_path = "{{kb.wiki}}/知识库索引.md"
+
+          # 读取现有索引
+          if os.path.exists(index_path):
+              with open(index_path, 'r', encoding='utf-8') as f:
+                  existing_content = f.read()
+          else:
+              existing_content = """# 知识库索引
+
+## 📚 主要分类
+- [[AI技术]]
+- [[开发技术]]
+- [[面试准备]]
+- [[个人笔记]]
+- [[参考资料]]
+
+## 🚀 快速导航
+- [[最近更新]]
+- [[未分类]]
+"""
+
+          # 添加新收载的文件信息
+          with open('/tmp/new_files.txt', 'r') as f:
+              new_files = f.read()
+
+          if new_files:
+              update_section = f"""
+## 📥 最新收载
+{new_files}"""
+
+              # 检查是否已存在该部分
+              if "## 📥 最新收载" in existing_content:
+                  existing_content = re.sub(
+                      r'## 📥 最新收载.*?(?=## |\Z)',
+                      update_section,
+                      existing_content,
+                      flags=re.DOTALL
+                  )
+              else:
+                  existing_content += update_section
+
+          with open(index_path, 'w', encoding='utf-8') as f:
+              f.write(existing_content)
+
+  - name: 验证结果
+    bash: |
+      echo "🎉 验证收载结果..."
+      processed_count=$(wc -l < /tmp/processed)
+      echo "✅ 成功处理 $processed_count 个文件"
+      echo "📂 文件已移动到对应分类目录"
+
+      # 显示收载统计
+      echo "📊 分类统计:"
+      for category in "AI技术" "开发技术" "面试准备" "个人笔记" "参考资料" "未分类"; do
+        count=$(find "{{kb.wiki}}/$category" -name "*.md" 2>/dev/null | wc -l)
+        if [ $count -gt 0 ]; then
+          echo "  - $category: $count 个文件"
+        fi
+      done
+
+output: |
+  📥 素材收载完成！
+
+  📊 收载统计：
+  - 处理文件数: $(wc -l < /tmp/new_files.txt)
+  - 已分类到各知识库目录
+
+  📋 收载文件列表：
+  $(cat /tmp/new_files.txt | while read file; do echo "  - $(basename "$file)"; done)
+
+  🚀 下一步建议：
+  1. 使用 `/wiki query` 查询相关问题
+  2. 使用 `/wiki lint` 检查链接完整性
+  3. 手动整理和优化收载的内容

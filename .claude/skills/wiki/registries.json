@@ -1,0 +1,13 @@
+{
+  "default": "obsidian-vault",
+  "knowledge_bases": {
+    "obsidian-vault": {
+      "id": "obsidian-vault",
+      "name": "Obsidian Vault",
+      "root": "/Users/gaozhiyang/projects/ObsidianProjects/Obsidian",
+      "wiki": "/Users/gaozhiyang/projects/ObsidianProjects/Obsidian/01-AI技术",
+      "raw": "/Users/gaozhiyang/projects/ObsidianProjects/Obsidian/05-参考资料",
+      "lang": "zh-CN"
+    }
+  }
+}

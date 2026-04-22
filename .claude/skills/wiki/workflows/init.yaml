@@ -1,0 +1,105 @@
+# 初始化知识库工作流
+description: |
+  创建和注册一个新的知识库，设置基本结构和配置文件
+
+steps:
+  - name: 检查知识库配置
+    bash: |
+      if [ -f "registries.json" ]; then
+        echo "✅ 知识库配置已存在"
+        exit 0
+      else
+        echo "🚀 开始创建知识库配置"
+        exit 1
+      fi
+
+  - name: 创建registries.json配置文件
+    write_file: |
+      {
+        "default": "{{kb.id}}",
+        "knowledge_bases": {
+          "{{kb.id}}": {
+            "id": "{{kb.id}}",
+            "name": "{{kb.name}}",
+            "root": "{{kb.root}}",
+            "wiki": "{{kb.wiki}}",
+            "raw": "{{kb.raw}}",
+            "lang": "{{kb.lang}}"
+          }
+        }
+      }
+
+  - name: 检查基础目录结构
+    bash: |
+      echo "🔍 检查目录结构..."
+      mkdir -p "{{kb.wiki}}"
+      mkdir -p "{{kb.raw}}"
+      echo "✅ 目录结构已就绪"
+
+  - name: 创建知识库约定文件（可选）
+    condition: file_exists("{{kb.wiki}}")
+    write_file: |
+      # 知识库操作约定
+      ## 页面命名规范
+      - 使用中文标题，避免特殊字符
+      - 重要概念使用 [[双链]] 标记
+      - 技术术语使用 `反引号` 标记
+
+      ## 内容分类
+      - 学习笔记: 以 "学习 - " 开头
+      - 技术心得: 以 "心得 - " 开头
+      - 项目记录: 以 "项目 - " 开头
+      - 面试准备: 放在专门的面试分类中
+
+      ## 链接规范
+      - 内部链接使用 [[页面名]]
+      - 外部链接使用 [描述](URL)
+      - 图片使用 ![[图片名]] 格式
+
+  - name: 创建根目录索引
+    write_file: |
+      # 知识库索引
+
+      ## 📚 主要分类
+      - [[AI技术]] - AI相关技术文档
+      - [[开发技术]] - 后端、前端、DevOps等技术
+      - [[面试准备]] - 八股面试、系统设计等
+      - [[个人笔记]] - 学习总结、技术心得
+      - [[参考资料]] - 文档剪藏、技术博客
+
+      ## 🚀 快速导航
+      - [[最近更新]]
+      - [[未分类]]
+
+      ## 💡 使用提示
+      - 收集新资料时，先在 `05-参考资料/` 中整理
+      - 整理完成后，链接到相应的分类中
+      - 定期检查和维护链接的有效性
+
+  - name: 验证初始化结果
+    bash: |
+      echo "🎉 验证知识库初始化结果..."
+      if [ -f "registries.json" ] && [ -d "{{kb.wiki}}" ] && [ -d "{{kb.raw}}" ]; then
+        echo "✅ 知识库初始化成功！"
+        echo "📂 Wiki目录: {{kb.wiki}}"
+        echo "📂 Raw目录: {{kb.raw}}"
+        exit 0
+      else
+        echo "❌ 知识库初始化失败"
+        exit 1
+      fi
+
+output: |
+  🎉 知识库初始化完成！
+
+  📋 配置信息：
+  - 知识库名称: {{kb.name}}
+  - 根目录: {{kb.root}}
+  - Wiki目录: {{kb.wiki}}
+  - Raw目录: {{kb.raw}}
+  - 语言: {{kb.lang}}
+
+  🚀 下一步操作建议：
+  1. 使用 `/wiki ingest` 收集新素材
+  2. 使用 `/wiki query "是什么"` 查询知识
+  3. 使用 `/wiki lint` 检查知识库健康状况

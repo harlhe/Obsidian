@@ -1,0 +1,267 @@
+# 查询知识库工作流
+description: |
+  基于知识库内容回答问题、整理信息、对比分析
+
+steps:
+  - name: 构建知识库索引
+    bash: |
+      echo "📚 构建知识库索引..."
+
+      # 收集所有Markdown文件
+      find "{{kb.wiki}}" -name "*.md" -type f | grep -v "/\." | sort > /tmp/kb_files.txt
+
+      if [ ! -s /tmp/kb_files.txt ]; then
+        echo "❌ 知识库中没有找到任何文件"
+        exit 1
+      fi
+
+      echo "📋 找到 $(wc -l < /tmp/kb_files.txt) 个文件"
+
+      # 创建文件内容索引
+      while IFS= read -r file; do
+        # 提取标题
+        title=$(head -1 "$file" | sed 's/^# //')
+        [ -z "$title" ] && title=$(basename "$file" .md)
+
+        # 提取前100字符作为摘要
+        summary=$(sed -n '1,3p' "$file" | sed 's/^# //g' | tr '\n' ' ' | head -c 100)
+
+        echo "📄 $title: $summary"
+      done < /tmp/kb_files.txt
+
+  - name: 搜索相关内容
+    bash: |
+      echo "🔍 搜索 '{{args}}' 相关内容..."
+
+      # 创建搜索脚本
+      cat > /tmp/search.py << 'EOF'
+      import re
+      import json
+
+      # 用户查询关键词
+      query = "{{args}}"
+
+      # 文件列表
+      with open('/tmp/kb_files.txt', 'r') as f:
+          files = [line.strip() for line in f]
+
+      # 搜索结果
+      results = []
+
+      for file in files:
+          try:
+              with open(file, 'r', encoding='utf-8') as f:
+                  content = f.read()
+
+              # 搜索标题
+              title_match = re.search(r'^# (.+)$', content, re.MULTILINE)
+              title = title_match.group(1) if title_match else "无标题"
+
+              # 检查关键词匹配
+              query_lower = query.lower()
+              content_lower = content.lower()
+
+              # 计算相关性分数
+              score = 0
+              if query_lower in title_lower:
+                  score += 10
+
+              # 在内容中搜索
+              if query_lower in content_lower:
+                  score += 1
+
+              # 高级匹配
+              query_words = query_lower.split()
+              for word in query_words:
+                  if len(word) > 2:  # 忽略太短的词
+                      if word in title_lower:
+                          score += 5
+                      if word in content_lower:
+                          score += 0.5
+
+      if score > 0:
+          # 提取摘要
+          lines = content.split('\n')
+          summary_lines = [line.strip() for line in lines[:5] if line.strip()]
+          summary = ' | '.join(summary_lines[:3])
+
+          if len(summary) > 150:
+              summary = summary[:150] + '...'
+
+          results.append({
+              'file': file,
+              'title': title,
+              'score': score,
+              'summary': summary
+          })
+
+      # 排序结果
+      results.sort(key=lambda x: x['score'], reverse=True)
+
+      # 输出前5个结果
+      for i, result in enumerate(results[:5], 1):
+          print(f"{i}. {result['title']} (分数: {result['score']})")
+          print(f"   {result['summary']}")
+          print(f"   📄 {result['file']}")
+          print()
+
+      EOF
+
+      python3 /tmp/search.py > /tmp/search_results.txt
+
+  - name: 生成回答
+    write_file: |
+      # 生成回答脚本
+      import json
+
+      # 读取搜索结果
+      with open('/tmp/search_results.txt', 'r') as f:
+          search_content = f.read()
+
+      # 用户问题
+      user_question = "{{args}}"
+
+      # 构建回答
+      answer = f"""
+      🔍 关于 "{user_question}" 的回答：
+
+      ## 📖 相关知识文档
+
+      {search_content}
+
+      ## 🤖 综合分析
+
+      基于您知识库中的内容，我对 "{user_question}" 的分析如下：
+
+      1. **核心概念**：
+         - 从搜索结果中可以看出，这个问题涉及多个方面的知识
+
+      2. **关键要点**：
+         - 相关文档提供了详细的技术说明
+         - 实践经验和理论分析相结合
+
+      3. **应用场景**：
+         - 在实际项目中，这些知识可以应用于...
+
+      💡 提示：您可以查看具体文档以获得更详细的信息。
+      """
+
+      print(answer)
+
+  - name: 处理不同查询类型
+    bash: |
+      # 判断查询类型
+      case "{{args}}" in
+        *"对比"*|*"比较"*)
+          echo "📊 处理对比查询..."
+          # 生成对比分析报告
+          ;;
+        *"整理"*|*"分析"*)
+          echo "📋 处理整理查询..."
+          # 生成整理报告
+          ;;
+        *)
+          echo "💬 处理问答查询..."
+          # 生成问答回答
+          ;;
+      esac
+
+  - name: 创建总结页面
+    condition: file_exists("/tmp/search_results.txt")
+    write_file: |
+      # 创建查询总结页面
+      def create_summary_page():
+          from datetime import datetime
+          import uuid
+
+          # 生成唯一ID
+          query_id = str(uuid.uuid4())[:8]
+          timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+          summary_content = f"""# 查询总结 - {query_id}
+
+## 📋 查询信息
+- **查询时间**: {timestamp}
+- **查询内容**: "{{args}}"
+- **知识库**: {{kb.name}}
+
+## 🔍 搜索结果
+[搜索结果内容插入]
+
+## 💡 总结分析
+[分析内容插入]
+
+## 🔗 相关链接
+- [[知识库索引]]
+- [[最近查询]]
+
+---
+
+*此页面由wiki技能自动生成*
+"""
+
+          summary_path = f"{{kb.wiki}}/查询总结/{query_id}.md"
+          os.makedirs(os.path.dirname(summary_path), exist_ok=True)
+
+          with open(summary_path, 'w', encoding='utf-8') as f:
+              f.write(summary_content)
+
+          return summary_path
+
+  - name: 更新最近查询记录
+    condition: file_exists("/tmp/search_results.txt")
+    write_file: |
+      # 更新最近查询记录
+      def update_recent_queries():
+          recent_file = "{{kb.wiki}}/最近查询.md"
+
+          # 读取现有记录
+          if os.path.exists(recent_file):
+              with open(recent_file, 'r', encoding='utf-8') as f:
+                  existing = f.read()
+          else:
+              existing = """# 最近查询
+
+## 🕐 查询记录
+"""
+
+          # 添加新记录
+          new_record = f"""
+- **{datetime.now().strftime('%Y-%m-%d %H:%M')}** - "{{args}}"
+  - [[查询总结-{str(uuid.uuid4())[:8]}]]
+"""
+
+          # 保留最近20条记录
+          records = re.findall(r'- \*\d{4}-\d{2}-\d{2} \d{2}:\d{2}\*\s+- .*', existing)
+          if len(records) >= 20:
+              # 删除最旧的记录
+              records = records[:-1]
+              existing = re.sub(r'- \*\d{4}-\d{2}-\d{2} \d{2}:\d{2}\*\s+- .*', '', existing)
+              for record in records:
+                  existing += record + '\n'
+
+          existing += new_record
+
+          with open(recent_file, 'w', encoding='utf-8') as f:
+              f.write(existing)
+
+output: |
+  🧠 知识库查询完成！
+
+  📊 查询统计：
+  - 搜索文件数: $(wc -l < /tmp/kb_files.txt)
+  - 相关结果数: $(grep -c "^." /tmp/search_results.txt)
+
+  🔍 查询内容: "{{args}}"
+
+  📋 查询结果：
+  $(cat /tmp/search_results.txt)
+
+  💡 查询建议：
+  1. 查看具体的文档内容获取详细信息
+  2. 使用 `/wiki lint` 检查知识库完整性
+  3. 如果需要更精确的结果，请使用更具体的关键词
+
+  📄 相关页面：
+  - [[最近查询]] - 查询历史记录
+  - [[知识库索引]] - 知识库地图

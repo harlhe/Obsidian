@@ -1,0 +1,234 @@
+# 知识库健康检查工作流
+description: |
+  检查知识库的健康状况，包括链接完整性、文件结构、命名规范等
+
+steps:
+  - name: 检查基础结构
+    bash: |
+      echo "🔍 检查知识库基础结构..."
+
+      # 检查必要目录
+      check_dir "{{kb.wiki}}" "Wiki目录"
+      check_dir "{{kb.raw}}" "Raw目录"
+
+      # 检查核心文件
+      check_file "{{kb.wiki}}/知识库索引.md" "知识库索引"
+
+      # 统计文件数量
+      total_files=$(find "{{kb.wiki}}" -name "*.md" -type f | wc -l)
+      echo "📊 总文件数: $total_files"
+
+  - name: 检查文件命名规范
+    bash: |
+      echo "📝 检查文件命名规范..."
+      issues=0
+
+      # 检查特殊字符和空格
+      find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+        filename=$(basename "$file")
+        if echo "$filename" | grep -E '[<>:"/\\|?*\s]$' >/dev/null; then
+          echo "❌ 问题文件: $filename (包含非法字符)"
+          ((issues++))
+        fi
+      done
+
+      # 检查中文字符
+      find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+        filename=$(basename "$file")
+        if echo "$filename" | grep -P '[\x{4e00}-\x{9fff}]' >/dev/null; then
+          # 检查是否包含纯英文文件名
+          if ! echo "$filename" | grep -E '^[A-Za-z0-9_.-]+$' >/dev/null; then
+            echo "✅ 中文文件名: $filename"
+          fi
+        fi
+      done
+
+      if [ $issues -eq 0 ]; then
+        echo "✅ 文件命名检查通过"
+      else
+        echo "⚠️ 发现 $issues 个命名问题"
+      fi
+
+  - name: 检查链接完整性
+    bash: |
+      echo "🔗 检查链接完整性..."
+      broken_links=0
+
+      # 查找所有内部链接
+      find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+        # 提取wikilinks
+        grep -o '\[\[.*\]\]' "$file" | sed 's/\[\[\(.*\)\]\]/\1/' | sort -u > /tmp/links_in_$file.txt
+      done
+
+      # 检查每个链接是否存在
+      find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+        while IFS= read -r link; do
+          # 移除可能的锚点
+          clean_link=$(echo "$link" | sed 's/#.*$//')
+
+          if [ ! -f "{{kb.wiki}}/$clean_link.md" ]; then
+            echo "❌ 断链: $file -> $clean_link"
+            ((broken_links++))
+          fi
+        done < /tmp/links_in_$file.txt 2>/dev/null || true
+      done
+
+      # 清理临时文件
+      rm -f /tmp/links_in_*.txt
+
+      if [ $broken_links -eq 0 ]; then
+        echo "✅ 链接检查通过"
+      else
+        echo "⚠️ 发现 $broken_links 个断链"
+      fi
+
+  - name: 检查frontmatter完整性
+    bash: |
+      echo "📄 检查frontmatter完整性..."
+      missing_frontmatter=0
+
+      find "{{kb.wiki}}" -name "*.md" -type f | while read file; do
+        if ! head -1 "$file" | grep -q '^---$'; then
+          echo "❌ 缺少frontmatter: $(basename "$file")"
+          ((missing_frontmatter++))
+        fi
+      done
+
+      if [ $missing_frontmatter -eq 0 ]; then
+        echo "✅ Frontmatter检查通过"
+      else
+        echo "⚠️ 发现 $missing_frontmatter 个文件缺少frontmatter"
+      fi
+
+  - name: 检查分类组织
+    bash: |
+      echo "📂 检查分类组织..."
+
+      # 统计各分类文件数
+      echo "📊 分类统计:"
+      for category in "AI技术" "开发技术" "面试准备" "个人笔记" "参考资料" "未分类"; do
+        count=$(find "{{kb.wiki}}/$category" -name "*.md" 2>/dev/null | wc -l)
+        if [ $count -gt 0 ]; then
+          echo "  - $category: $count 个文件"
+        fi
+      done
+
+      # 检查未分类文件
+      uncategorized=$(find "{{kb.wiki}}/未分类" -name "*.md" 2>/dev/null | wc -l)
+      if [ $uncategorized -gt 0 ]; then
+        echo "⚠️ 未分类文件数: $uncategorized"
+        echo "📋 建议移到相应分类:"
+        find "{{kb.wiki}}/未分类" -name "*.md" | head -5 | while read file; do
+          echo "  - $(basename "$file")"
+        done
+      fi
+
+  - name: 检查最近更新
+    bash: |
+      echo "🕐 检查最近更新..."
+
+      # 查找最近7天修改的文件
+      recent_files=$(find "{{kb.wiki}}" -name "*.md" -type f -mtime -7 | wc -l)
+      if [ $recent_files -gt 0 ]; then
+        echo "📈 最近7天更新: $recent_files 个文件"
+        find "{{kb.wiki}}" -name "*.md" -type f -mtime -7 | head -3 | while read file; do
+          echo "  - $(basename "$file") ($(date -r "$file" '+%Y-%m-%d'))"
+        done
+      else
+        echo "📭 最近7天无更新"
+      fi
+
+  - name: 生成健康报告
+    write_file: |
+      # 生成健康检查报告
+      def generate_health_report():
+          report = f"""# 知识库健康检查报告
+
+## 📊 概览
+- 检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+- 知识库: {{kb.name}}
+- 总文件数: {len(find_all_md_files())}
+- 问题数: {count_issues()}
+
+## ✅ 健康状态
+"""
+
+          # 添加状态评估
+          total_issues = count_issues()
+          if total_issues == 0:
+              report += "🟢 优秀 - 知识库状态良好\n"
+          elif total_issues <= 3:
+              report += "🟡 良好 - 存在少量问题\n"
+          else:
+              report += "🔴 需要改进 - 存在较多问题\n"
+
+          report += f"""
+
+## 🔍 详细检查结果
+{get_detailed_results()}
+
+## 💡 改进建议
+{get_improvement_suggestions()}
+"""
+
+          return report
+
+  - name: 保存检查结果
+    condition: true
+    write_file: |
+      # 保存健康检查结果
+      report_file="{{kb.wiki}}/健康检查报告.md"
+
+      if [ -f "$report_file" ]; then
+        echo "📄 生成新的健康检查报告"
+      else
+        echo "📄 创建健康检查报告"
+      fi
+
+      echo """
+# 知识库健康检查报告
+
+## 📊 检查概览
+- **检查时间**: $(date '+%Y-%m-%d %H:%M:%S')
+- **知识库**: {{kb.name}}
+- **总文件数**: $(find "{{kb.wiki}}" -name "*.md" | wc -l)
+
+## ✅ 检查结果
+- **基础结构**: 基础结构检查完成
+- **文件命名**: 命名规范检查完成
+- **链接完整性**: 链接检查完成
+- **Frontmatter**: Frontmatter检查完成
+- **分类组织**: 分类组织检查完成
+
+## 🔧 建议操作
+1. 定期运行 `/wiki lint` 监控知识库健康状态
+2. 及时修复断链和问题文件
+3. 保持良好的分类组织
+4. 定期整理和更新内容
+
+---
+
+*此报告由wiki技能自动生成*
+""" > "$report_file"
+
+      echo "✅ 健康检查报告已保存到: $report_file"
+
+output: |
+  🏥 知识库健康检查完成！
+
+  📊 检查概览：
+  - 检查时间: $(date '+%Y-%m-%d %H:%M:%S')
+  - 知识库: {{kb.name}}
+  - 总文件数: $(find "{{kb.wiki}}" -name "*.md" | wc -l)
+
+  ✅ 检查项目：
+  - [x] 基础结构
+  - [x] 文件命名规范
+  - [x] 链接完整性
+  - [x] Frontmatter完整性
+  - [x] 分类组织
+  - [x] 最近更新
+
+  📋 健康报告已保存到: {{kb.wiki}}/健康检查报告.md
+
+  💡 建议定期运行 `/wiki lint` 监控知识库状态

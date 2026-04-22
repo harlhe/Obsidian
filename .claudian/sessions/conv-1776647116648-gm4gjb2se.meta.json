@@ -4,8 +4,8 @@
   "title": "Restructure notes by topic",
   "titleGenerationStatus": "success",
   "createdAt": 1776647116648,
-  "updatedAt": 1776647294184,
-  "lastResponseAt": 1776647294184,
+  "updatedAt": 1776886949002,
+  "lastResponseAt": 1776886949002,
   "sessionId": "b3cda23d-1e52-4561-87e9-3f877defc33d",
   "providerState": {
     "providerSessionId": "b3cda23d-1e52-4561-87e9-3f877defc33d"
@@ -17,7 +17,6 @@
     "cacheReadInputTokens": 0,
     "contextWindow": 200000,
     "contextTokens": 0,
-    "percentage": 0,
-    "contextWindowIsAuthoritative": true
+    "percentage": 0
   }
 }
