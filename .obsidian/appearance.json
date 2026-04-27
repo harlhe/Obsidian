@@ -4,5 +4,10 @@
   "baseFontSize": 15,
   "baseFontSizeAction": true,
   "interfaceFontFamily": "Inter",
-  "textFontFamily": "Inter"
+  "textFontFamily": "Inter",
+  "theme": "moonstone",
+  "enabledCssSnippets": [
+    "github-dark-pro",
+    "github-pro"
+  ]
 }
