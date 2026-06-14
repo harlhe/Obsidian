@@ -1,0 +1,1 @@
+Issue #1 result: 0
